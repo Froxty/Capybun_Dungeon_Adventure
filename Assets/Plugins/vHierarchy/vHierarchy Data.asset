@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9752b0c8e144801967e6897679604b, type: 3}
+  m_Name: vHierarchy Data
+  m_EditorClassIdentifier: VHierarchy::VHierarchy.VHierarchyData
+  sceneDatas_byGuid:
+    keys:
+    - 17c8364dbfcb0fd4ba66d9d8a15a9ac8
+    values:
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-17c8364dbfcb0fd4ba66d9d8a15a9ac8-8011051951850787839-1533561558
+        - globalObjectIdString: GlobalObjectId_V1-2-17c8364dbfcb0fd4ba66d9d8a15a9ac8-8011051951850787839-503303807
+        - globalObjectIdString: GlobalObjectId_V1-2-17c8364dbfcb0fd4ba66d9d8a15a9ac8-628429117-0
+        - globalObjectIdString: GlobalObjectId_V1-2-17c8364dbfcb0fd4ba66d9d8a15a9ac8-8011051950859376937-0
+        - globalObjectIdString: GlobalObjectId_V1-2-17c8364dbfcb0fd4ba66d9d8a15a9ac8-858115417-0
+        - globalObjectIdString: GlobalObjectId_V1-2-17c8364dbfcb0fd4ba66d9d8a15a9ac8-7485280045499089339-0
+        - globalObjectIdString: GlobalObjectId_V1-2-17c8364dbfcb0fd4ba66d9d8a15a9ac8-1384123417-0
+        - globalObjectIdString: GlobalObjectId_V1-2-17c8364dbfcb0fd4ba66d9d8a15a9ac8-2053262345-0
+        - globalObjectIdString: GlobalObjectId_V1-2-17c8364dbfcb0fd4ba66d9d8a15a9ac8-1430672077-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 7
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 4
+          iconNameOrGuid: Canvas Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Canvas Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Canvas Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: Settings Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+  bookmarks: []
+  bookmarkedScenePaths: []

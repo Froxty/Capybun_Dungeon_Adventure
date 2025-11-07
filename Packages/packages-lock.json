@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.poiyomi.toon": {
+      "version": "https://github.com/poiyomi/PoiyomiToonShader.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0f4db4dffb66dab7978729be3999c16aa348b1d1"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

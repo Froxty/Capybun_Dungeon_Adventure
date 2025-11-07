@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.poiyomi.toon": "https://github.com/poiyomi/PoiyomiToonShader.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.cinemachine": "3.1.5",
     "com.unity.collab-proxy": "2.10.1",

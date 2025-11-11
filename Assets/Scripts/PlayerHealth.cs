@@ -3,46 +3,78 @@ using UnityEngine.InputSystem;
 using System;
 using System.Collections;
 
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerHealth : MonoBehaviour
 {
+    // ====== Minimal Inspector ======
     [Header("Health")]
-    public float maxHealth = 10f;
+    [SerializeField] float maxHealth = 10f;
 
-    [Header("Health Bar")]
-    public HealthBar healthBar;
+    [Header("UI")]
+    [SerializeField] HealthBar healthBar;
 
     [Header("Regen")]
-    public float regenDelaySeconds = 5f;   // wait time after last damage
-    public float regenPerSecond    = 0.5f; // heal speed once regen starts
+    [SerializeField] float regenDelaySeconds = 5f;
+    [SerializeField] float regenPerSecond    = 0.5f;
 
+    [Header("Respawn")]
+    [Tooltip("This character's spawn Transform (Capy uses Capy spawn, Bun uses Bun spawn).")]
+    [SerializeField] Transform myRespawn;
+
+    // ====== Internal constants (hidden) ======
+    const string kDeathTag         = "Death"; // Animator state tag to wait for
+    const string kIdleStateName    = "Idle";  // Animator idle state name
+    const int    kIdleLayer        = 0;       // base layer
+    const float  kFallbackRespawnS = 1.1f;    // used if we can't detect the tagged state
+
+    // Party-wide signal: 1 player dies, BOTH respawn.
+    public static event Action OnPartyRespawnRequested;
     public static event Action OnPlayerRespawned;
 
-    // optional: hook to your existing PlayerController so only the active one gets debug input
-    [Header("Optional: gate debug input by active controller")]
-    public PlayerController controller;
+    static bool         s_partyRespawning = false; // guard double-requests
+    static PlayerHealth s_lastDeceased    = null;  // who died
+    static bool         s_dyingWasActive  = false; // did they have control right before death?
+
+    PlayerController controller;
+    Rigidbody        rb;
 
     float currentHealth;
     float lastDamageTime = -999f;
+    bool  isDead = false;
+
+    // Reset statics on domain reload / scene load so states don't leak between plays
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetStatics()
+    {
+        s_partyRespawning = false;
+        s_lastDeceased    = null;
+        s_dyingWasActive  = false;
+    }
 
     void Awake()
     {
         currentHealth = maxHealth;
 
-        if (!controller) controller = GetComponent<PlayerController>();
+        controller = GetComponent<PlayerController>();
+        rb         = GetComponent<Rigidbody>();
 
-        if (!healthBar)
-        {
-            Debug.LogWarning($"[PlayerHealth] No HealthBar assigned for {name}! Please assign manually.");
-        }
-        else
-        {
-            healthBar.UpdateHealthBar(maxHealth, currentHealth);
-        }
+        if (healthBar) healthBar.UpdateHealthBar(maxHealth, currentHealth);
+        else Debug.LogWarning($"[PlayerHealth] No HealthBar assigned for {name}.");
+
+        OnPartyRespawnRequested += HandlePartyRespawnRequested;
+    }
+
+    void OnDestroy()
+    {
+        OnPartyRespawnRequested -= HandlePartyRespawnRequested;
+        if (s_lastDeceased == this) s_lastDeceased = null;
     }
 
     void Update()
     {
-        // Passive regen if enough time has passed and we're not full
+        if (isDead) return;
+
         if (currentHealth < maxHealth && (Time.time - lastDamageTime) >= regenDelaySeconds)
         {
             float old = currentHealth;
@@ -52,35 +84,37 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    // ===== Debug Controls (optional) =====
+    // ===== Debug (optional) =====
     public void OnDebugDamage(InputValue v)
     {
-        // Only respond if this player is the active one (acceptInput true)
         if (v.isPressed && (controller == null || controller.acceptInput))
             TakeDamage(1f);
     }
-
     public void OnDebugHeal(InputValue v)
     {
         if (v.isPressed && (controller == null || controller.acceptInput))
             Heal(1f);
     }
-    // ====================================
+    // ============================
 
     public void TakeDamage(float amount)
     {
+        if (isDead) return;
+
         float old = currentHealth;
         currentHealth = Mathf.Clamp(currentHealth - amount, 0f, maxHealth);
-        lastDamageTime = Time.time; // reset regen timer
+        lastDamageTime = Time.time;
 
         if (healthBar && !Mathf.Approximately(old, currentHealth))
             healthBar.UpdateHealthBar(maxHealth, currentHealth);
 
-        // if (currentHealth <= 0f) Die();
+        if (currentHealth <= 0f) Die();
     }
 
     public void Heal(float amount)
     {
+        if (isDead) return;
+
         float old = currentHealth;
         currentHealth = Mathf.Clamp(currentHealth + amount, 0f, maxHealth);
 
@@ -88,29 +122,105 @@ public class PlayerHealth : MonoBehaviour
             healthBar.UpdateHealthBar(maxHealth, currentHealth);
     }
 
-    // --- Respawn---
-    /*
+    // --- Death / Party Respawn ---
     void Die()
     {
-        Debug.Log("[PlayerHealth] Player has died.");
-        if (respawnPoint && playerRoot) StartCoroutine(HandleRespawn());
-        else Debug.LogWarning("[PlayerHealth] Missing respawnPoint or playerRoot.");
+        if (isDead) return;
+        isDead = true;
+
+        // Record who died and whether they currently had control.
+        s_lastDeceased   = this;
+        s_dyingWasActive = controller && controller.acceptInput;
+
+        // Lock input + stop motion
+        if (controller) controller.SetAcceptInput(false);
+        ZeroVelocity(); // body is dynamic here, safe to zero
+
+        // Play death animation
+        if (controller && controller.animator) controller.PlayDeath();
+
+        StartCoroutine(WaitDeathThenRequestPartyRespawn());
     }
 
-    IEnumerator HandleRespawn()
+    IEnumerator WaitDeathThenRequestPartyRespawn()
     {
-        var cc = playerRoot.GetComponentInChildren<CharacterController>();
-        if (cc) cc.enabled = false;
-        yield return null;
-        playerRoot.transform.position = respawnPoint.position;
-        yield return null;
-        if (cc) cc.enabled = true;
+        bool usedTagWait = false;
+        float start = Time.time;
 
+        if (controller && controller.animator)
+        {
+            var anim = controller.animator;
+
+            // Wait to ENTER the Death-tagged state (timeout to be safe)
+            float timeoutEnter = 1f;
+            while (!anim.GetCurrentAnimatorStateInfo(0).IsTag(kDeathTag) &&
+                   (Time.time - start) < timeoutEnter)
+                yield return null;
+
+            // If we entered it, wait to EXIT it
+            if (anim.GetCurrentAnimatorStateInfo(0).IsTag(kDeathTag))
+            {
+                usedTagWait = true;
+                while (anim.GetCurrentAnimatorStateInfo(0).IsTag(kDeathTag))
+                    yield return null;
+            }
+        }
+
+        if (!usedTagWait)
+            yield return new WaitForSeconds(kFallbackRespawnS);
+
+        if (!s_partyRespawning)
+        {
+            s_partyRespawning = true;
+            OnPartyRespawnRequested?.Invoke();
+            s_partyRespawning = false;
+        }
+    }
+
+    void HandlePartyRespawnRequested()
+    {
+        StartCoroutine(RespawnRoutine());
+    }
+
+    IEnumerator RespawnRoutine()
+    {
+        if (myRespawn)
+            transform.SetPositionAndRotation(myRespawn.position, myRespawn.rotation);
+        else
+            Debug.LogWarning($"[PlayerHealth] {name} missing myRespawn; so can't teleport");
+
+        ZeroVelocity();
+        yield return null;
+
+        // Restore health/UI
         currentHealth = maxHealth;
         if (healthBar) healthBar.UpdateHealthBar(maxHealth, currentHealth);
 
-        Debug.Log($"[PlayerHealth] Respawned at {respawnPoint.position}");
+        // Ensure Animator is out of Death
+        if (controller && controller.animator)
+        {
+            controller.animator.ResetTrigger("Die");
+            controller.animator.CrossFade(kIdleStateName, 0f, kIdleLayer, 0f);
+        }
+
+        // Decide who gets control after the party respawn:
+        // - If you are the last deceased → you get control iff s_dyingWasActive
+        // - If you are the survivor      → you get control iff !s_dyingWasActive
+        bool shouldBeActive =
+            (this == s_lastDeceased) ? s_dyingWasActive : !s_dyingWasActive;
+
+        isDead = false;
+        lastDamageTime = Time.time; // avoid instant regen tick
+        if (controller) controller.SetAcceptInput(shouldBeActive);
+
         OnPlayerRespawned?.Invoke();
     }
-    */
+
+    void ZeroVelocity()
+    {
+        if (!rb) return;
+        if (rb.isKinematic) return; // safety net
+        rb.linearVelocity = Vector3.zero;  
+        rb.angularVelocity = Vector3.zero;
+    }
 }

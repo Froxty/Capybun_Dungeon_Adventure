@@ -13,23 +13,31 @@ public class PlayerController : MonoBehaviour
     public float groundRadius = 0.15f;
     public LayerMask whatIsGround;
 
-    [Header("Optional Animations")]
+    [Header("Visuals / Animation")]
     public Animator animator;
+    public SpriteRenderer sprite;
+
+    [Header("Animator Trigger Names")]
+    public string interactTrigger = "Interact"; 
+    public string dieTrigger = "Die";           
 
     [Header("Input Routing")]
-    public bool acceptInput = true;   // toggled via SetAcceptInput()
+    public bool acceptInput = true;           // toggled via SetAcceptInput()
 
+    // --- Private ---
     Rigidbody rb;
     Vector2 moveInput;
     bool isGrounded;
+    bool faceRight = true;                    // last horizontal facing (true = right)
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         if (whatIsGround.value == 0) whatIsGround = LayerMask.GetMask("Ground");
+        if (!sprite) sprite = GetComponentInChildren<SpriteRenderer>();
     }
-
-    // Call this instead of setting acceptInput directly
+    
+    /// Enable/disable player control. Clears cached input and halts horizontal drift.
     public void SetAcceptInput(bool value)
     {
         if (acceptInput == value) return;
@@ -41,16 +49,31 @@ public class PlayerController : MonoBehaviour
         // Stop horizontal drift #buggo fixed
         var v = rb.linearVelocity;
         rb.linearVelocity = new Vector3(0f, v.y, 0f);
-        
+
         if (animator)
+        {
             animator.SetBool("IsMoving", false);
+        }
     }
 
-    // --- Input System ---
+    // --- Input System callbacks (names must match your Input Actions) ---
     public void OnMove(InputValue v)
     {
         if (!acceptInput) return;
         moveInput = v.Get<Vector2>();
+    }
+
+    public void OnCast(InputValue v)
+    {
+        if (!acceptInput) return;
+        Debug.Log("Interact pressed");
+        if (animator) animator.SetTrigger(interactTrigger);
+    }
+
+    public void OnDebugDie(InputValue v)
+    {
+        if (!v.isPressed) return;
+        PlayDeath();
     }
 
     public void OnJump(InputValue v)
@@ -68,12 +91,15 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 input = acceptInput ? moveInput : Vector2.zero;
+
+        // X/Z plane motion; Y is physics-controlled
         Vector3 move = new Vector3(input.x, 0f, input.y) * moveSpeed;
         rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
     }
 
     void Update()
     {
+        // Ground check (sphere)
         isGrounded = Physics.CheckSphere(
             groundPoint ? groundPoint.position + Vector3.down * 0.02f : transform.position,
             groundRadius,
@@ -81,11 +107,27 @@ public class PlayerController : MonoBehaviour
             QueryTriggerInteraction.Ignore
         );
 
+        // --- Facing: only update when there's X input; Z-only keeps last facing ---
+        if (Mathf.Abs(moveInput.x) > 0.05f)
+        {
+            faceRight = moveInput.x > 0f;
+
+            // Flip sprite renderer if provided (flipX=false → facing right)
+            if (sprite) sprite.flipX = !faceRight;
+
+            if (animator) animator.SetBool("FaceRight", faceRight);
+        }
+
+        // Animator booleans
         if (animator)
         {
+            bool moving = acceptInput && moveInput.sqrMagnitude > 0.01f;
+            animator.SetBool("IsMoving", moving);
             animator.SetBool("IsGrounded", isGrounded);
-            animator.SetBool("IsMoving", acceptInput && moveInput.sqrMagnitude > 0.1f);
         }
+
+        // Sprites Face Camera [Test]
+        if (Camera.main) transform.forward = Camera.main.transform.forward;
     }
 
     void OnDrawGizmosSelected()
@@ -93,5 +135,16 @@ public class PlayerController : MonoBehaviour
         if (!groundPoint) return;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(groundPoint.position, groundRadius);
+    }
+
+    // ---------------------------
+    // Animation helpers
+    // ---------------------------
+
+    public void PlayDeath()
+    {
+        if (animator && !string.IsNullOrEmpty(dieTrigger))
+            animator.SetTrigger(dieTrigger);
+        SetAcceptInput(false);
     }
 }

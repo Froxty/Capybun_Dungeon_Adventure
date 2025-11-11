@@ -16,12 +16,17 @@ MonoBehaviour:
     keys:
     - b6dc134d0e31c624c9bb2ce8a5c93857
     - a1772684addf0cd4bb347655cd53dd75
+    - 76d33bd6023f98d40a17d2344d161589
     values:
     - iconNameOrGuid: cs Script Icon
       colorIndex: 4
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: SceneAsset Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: AnimationClip Icon
       colorIndex: 0
       isIconRecursive: 0
       isColorRecursive: 0

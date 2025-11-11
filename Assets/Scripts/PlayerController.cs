@@ -17,18 +17,18 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public SpriteRenderer sprite;
 
-    [Header("Animator Trigger Names")]
-    public string interactTrigger = "Interact"; 
-    public string dieTrigger = "Die";           
+    //[Header("Animator Trigger Names")]
+    string interactTrigger = "Interact"; 
+    string dieTrigger = "Die";           
 
     [Header("Input Routing")]
-    public bool acceptInput = true;           // toggled via SetAcceptInput()
+    public bool acceptInput = true; // toggled via SetAcceptInput()
 
     // --- Private ---
     Rigidbody rb;
     Vector2 moveInput;
     bool isGrounded;
-    bool faceRight = true;                    // last horizontal facing (true = right)
+    bool faceRight = true;  // last horizontal facing (true = right)
 
     void Awake()
     {
@@ -36,27 +36,27 @@ public class PlayerController : MonoBehaviour
         if (whatIsGround.value == 0) whatIsGround = LayerMask.GetMask("Ground");
         if (!sprite) sprite = GetComponentInChildren<SpriteRenderer>();
     }
-    
+
     /// Enable/disable player control. Clears cached input and halts horizontal drift.
+    bool BodyFree() => rb && !rb.isKinematic;
+
     public void SetAcceptInput(bool value)
     {
         if (acceptInput == value) return;
         acceptInput = value;
-
-        // Always clear cached input when toggling control
         moveInput = Vector2.zero;
 
-        // Stop horizontal drift #buggo fixed
-        var v = rb.linearVelocity;
-        rb.linearVelocity = new Vector3(0f, v.y, 0f);
-
-        if (animator)
+        if (BodyFree())
         {
-            animator.SetBool("IsMoving", false);
+            var v = rb.linearVelocity;
+            rb.linearVelocity = new Vector3(0f, v.y, 0f);
         }
+
+        if (animator) animator.SetBool("IsMoving", false);
     }
 
-    // --- Input System callbacks (names must match your Input Actions) ---
+
+    // --- Input System callbacks ---
     public void OnMove(InputValue v)
     {
         if (!acceptInput) return;
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue v)
     {
-        if (!acceptInput) return;
+        if (!acceptInput || !BodyFree()) return;
         if (v.isPressed && isGrounded)
         {
             var vel = rb.linearVelocity;
@@ -90,12 +90,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 input = acceptInput ? moveInput : Vector2.zero;
+        if (!BodyFree()) return; // <-- skip while kinematic during respawn
 
-        // X/Z plane motion; Y is physics-controlled
+        Vector2 input = acceptInput ? moveInput : Vector2.zero;
         Vector3 move = new Vector3(input.x, 0f, input.y) * moveSpeed;
         rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
     }
+
 
     void Update()
     {

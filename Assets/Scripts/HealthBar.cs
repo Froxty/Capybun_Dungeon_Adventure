@@ -86,6 +86,4 @@ public class HealthBar : MonoBehaviour
         healthBarImage.color = targetColor;
         healthText.text = $"HP {Mathf.RoundToInt(currentHealth)}/{Mathf.RoundToInt(maxHealth)}";
     }
-
 }
-

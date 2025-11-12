@@ -15,6 +15,7 @@ MonoBehaviour:
   sceneDatas_byGuid:
     keys:
     - 17c8364dbfcb0fd4ba66d9d8a15a9ac8
+    - 6c73b351bb90bcd46a12c5ecd07fa16b
     values:
     - goDatas_byGlobalId:
         keys:
@@ -62,6 +63,14 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 2
           iconNameOrGuid: Settings Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-140897763-0
+        values:
+        - colorIndex: 7
+          iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []

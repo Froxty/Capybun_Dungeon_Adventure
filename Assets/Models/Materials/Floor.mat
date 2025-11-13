@@ -41,7 +41,7 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
   stringTagMap:
-    AllLockedGUIDS: 41da569a906d45540b747275b1dd6fcb,2e3fb14090d9bb643b939d621caabb3d,d88c4c86227ebee4994f474e6c93807d
+    AllLockedGUIDS: 41da569a906d45540b747275b1dd6fcb,2e3fb14090d9bb643b939d621caabb3d
     OriginalKeywords: BSSBLOOMFOGTYPE_HEIGHT POI_STYLIZED_StylizedSpecular VIGNETTE_MASKED
       _LIGHTINGMODE_REALISTIC _RIM2STYLE_POIYOMI _RIMSTYLE_POIYOMI _STOCHASTICMODE_DELIOT_HEITZ
     OriginalShader: .poiyomi/Poiyomi Toon World
@@ -2725,8 +2725,8 @@ Material:
     - m_end_videoEffects: 0
     - m_end_voronoi: 0
     - m_end_voronoiRandom: 0
-    - m_lightingCategory: 1
-    - m_mainCategory: 1
+    - m_lightingCategory: 0
+    - m_mainCategory: 0
     - m_modifierCategory: 0
     - m_renderingCategory: 0
     - m_specialFXCategory: 0

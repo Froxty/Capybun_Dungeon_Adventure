@@ -24,7 +24,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Walls
-  m_Shader: {fileID: 4800000, guid: ff01255621f7917439b07cea89945c79, type: 3}
+  m_Shader: {fileID: 4800000, guid: bb9af75060011524d99397e23b49f225, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -41,7 +41,7 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
   stringTagMap:
-    AllLockedGUIDS: 61c997b144920a047aa20b74ab016343,170188750318aab4eb5d771d3a736c95
+    AllLockedGUIDS: 61c997b144920a047aa20b74ab016343
     OriginalKeywords: BSSBLOOMFOGTYPE_HEIGHT POI_STYLIZED_StylizedSpecular VIGNETTE_MASKED
       _LIGHTINGMODE_REALISTIC _RIM2STYLE_POIYOMI _RIMSTYLE_POIYOMI _STOCHASTICMODE_DELIOT_HEITZ
     OriginalShader: .poiyomi/Poiyomi Toon World
@@ -2726,7 +2726,7 @@ Material:
     - m_end_voronoi: 0
     - m_end_voronoiRandom: 0
     - m_lightingCategory: 1
-    - m_mainCategory: 0
+    - m_mainCategory: 1
     - m_modifierCategory: 0
     - m_renderingCategory: 0
     - m_specialFXCategory: 0

@@ -1,4 +1,4 @@
-Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab016343"
+Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/d88c4c86227ebee4994f474e6c93807d"
 {
 	Properties
 	{
@@ -243,6 +243,80 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 		[HideInInspector] m_end_stylizedSpec ("", Float) = 0
 		[HideInInspector] m_OutlineCategory (" Outlines--{reference_property:_EnableOutlines,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/outlines/main},hover:Documentation}}", Float) = 0
 		[HideInInspector] m_specialFXCategory ("Special FX", Float) = 0
+		[HideInInspector] m_start_emissionOptions (" Emission 0--{reference_property:_EnableEmission,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/special-fx/emission},hover:Documentation}}", Float) = 0
+		[HideInInspector][ThryToggle(_EMISSION)]
+		_EnableEmission ("Enable Emission 0", Float) = 0
+		[sRGBWarning]_EmissionMask ("Emission Mask--{reference_properties:[_EmissionMaskPan, _EmissionMaskUV, _EmissionMaskChannel, _EmissionMaskInvert, _EmissionMask0GlobalMask]}", 2D) = "white" { }
+		[HideInInspector][Vector2]_EmissionMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+		[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos, 5, Local Pos, 8, Polar UV, 6, Distorted UV, 7, Matcap, 9)] _EmissionMaskUV ("UV", Int) = 0
+		[HideInInspector][Enum(R, 0, G, 1, B, 2, A, 3)]_EmissionMaskChannel ("Channel", Float) = 0
+		[HideInInspector][ToggleUI]_EmissionMaskInvert ("Invert", Float) = 0
+		[HideInInspector][ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _EmissionMask0GlobalMask ("Global Mask--{reference_property:_EmissionMask0GlobalMaskBlendType}", Int) = 0
+		[HideInInspector][ThryWideEnum(Add, 7, Subtract, 1, Multiply, 2, Divide, 3, Min, 4, Max, 5, Average, 6, Replace, 0)]_EmissionMask0GlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+		[HDR]_EmissionColor ("Emission Color--{reference_property:_EmissionColorThemeIndex}", Color) = (1, 1, 1, 1)
+		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _EmissionColorThemeIndex ("", Int) = 0
+		[sRGBWarning(true)][Gradient]_EmissionMap ("Emission Map--{reference_properties:[_EmissionMapPan, _EmissionMapUV]}", 2D) = "white" { }
+		[HideInInspector][Vector2]_EmissionMapPan ("Panning", Vector) = (0, 0, 0, 0)
+		[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos, 5, Local Pos, 8, Polar UV, 6, Distorted UV, 7, Matcap, 9)] _EmissionMapUV ("UV", Int) = 0
+		_EmissionStrength ("Emission Strength", Range(0, 20)) = 0
+		[ToggleUI]_EmissionBaseColorAsMap ("Use Base Colors", Float) = 0
+		[ToggleUI]_EmissionReplace0 ("Override Base Color", Float) = 0
+		_EmissionFluorescence ("Fluorescence", Range(0, 1)) = 0
+		[HideInInspector] s_start_EmissionHueShift0 ("Color Adjust--{reference_property:_EmissionHueShiftEnabled,persistent_expand:true,default_expand:false}", Float) = 0
+		[HideInInspector][ToggleUI]_EmissionHueShiftEnabled ("Hue Shift", Float) = 0
+		[ThryWideEnum(OKLab, 0, HSV, 1)] _EmissionHueShiftColorSpace ("Color Space", Int) = 0
+		[ThryWideEnum(Hue Select, 0, Hue Shift, 1)] _EmissionHueSelectOrShift ("Select or Shift", Int) = 1
+		_EmissionSaturation ("Saturation", Range(-1, 10)) = 0
+		_EmissionHueShift ("Hue Shift", Range(0, 1)) = 0
+		_EmissionHueShiftSpeed ("Hue Shift Speed", Float) = 0
+		[HideInInspector] s_end_EmissionHueShift0 ("", Float) = 0
+		[HideInInspector] s_start_EmissionCenterOut0 ("Center Out--{reference_property:_EmissionCenterOutEnabled,persistent_expand:true,default_expand:false}", Float) = 0
+		[HideInInspector][ToggleUI]_EmissionCenterOutEnabled ("Center Out", Float) = 0
+		_EmissionCenterOutSpeed ("Flow Speed", Float) = 5
+		[HideInInspector] s_end_EmissionCenterOut0 ("", Float) = 0
+		[HideInInspector] s_start_EmissionLightBased0 ("Light Based--{reference_property:_EnableGITDEmission,persistent_expand:true,default_expand:false}", Float) = 0
+		[HideInInspector][ToggleUI]_EnableGITDEmission ("Light Based", Float) = 0
+		[Enum(World, 0, Mesh, 1)] _GITDEWorldOrMesh ("Lighting Type", Int) = 0
+		_GITDEMinEmissionMultiplier ("Min Emission Multiplier", Range(0, 1)) = 1
+		_GITDEMaxEmissionMultiplier ("Max Emission Multiplier", Range(0, 1)) = 0
+		_GITDEMinLight ("Min Lighting", Range(0, 1)) = 0
+		_GITDEMaxLight ("Max Lighting", Range(0, 1)) = 1
+		[HideInInspector] s_end_EmissionLightBased0 ("", Float) = 0
+		[HideInInspector] s_start_EmissionBlinking0 ("Blinking--{reference_property:_EmissionBlinkingEnabled,persistent_expand:true,default_expand:false}", Float) = 0
+		[HideInInspector][ToggleUI]_EmissionBlinkingEnabled ("Blinking", Float) = 0
+		_EmissiveBlink_Min ("Emissive Blink Min", Float) = 0
+		_EmissiveBlink_Max ("Emissive Blink Max", Float) = 1
+		_EmissiveBlink_Velocity ("Emissive Blink Velocity", Float) = 4
+		_EmissionBlinkingOffset ("Offset", Float) = 0
+		[HideInInspector] s_end_EmissionBlinking0 ("", Float) = 0
+		[HideInInspector] s_start_ScrollingEmission0 ("Scrolling--{reference_property:_ScrollingEmission,persistent_expand:true,default_expand:false}", Float) = 0
+		[HideInInspector][ToggleUI] _ScrollingEmission ("Scrolling", Float) = 0
+		[ToggleUI]_EmissionScrollingUseCurve ("Use Curve", float) = 0
+		[Curve]_EmissionScrollingCurve ("Curve--{condition_showS:(_EmissionScrollingUseCurve==1)}", 2D) = "white" { }
+		[ToggleUI]_EmissionScrollingVertexColor ("VColor as position", float) = 0
+		_EmissiveScroll_Direction ("Direction", Vector) = (0, -10, 0, 0)
+		_EmissiveScroll_Width ("Width", Float) = 10
+		_EmissiveScroll_Velocity ("Velocity", Float) = 10
+		_EmissiveScroll_Interval ("Interval", Float) = 20
+		_EmissionScrollingOffset ("Offset", Float) = 0
+		[HideInInspector] s_end_ScrollingEmission0 ("", Float) = 0
+		[Space(4)]
+		[ThryToggleUI(true)] _EmissionAL0Enabled ("<size=13><b>  Audio Link</b></size>--{ condition_showS:_EnableAudioLink==1}", Float) = 0
+		[HideInInspector] s_start_EmissionAL0Multiply ("Strength Multiply--{persistent_expand:true,default_expand:false, condition_showS:(_EmissionAL0Enabled==1 && _EnableAudioLink==1)}", Float) = 0
+		[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3, Volume, 4)] _EmissionAL0MultipliersBand ("Band", Int) = 0
+		[VectorLabel(Min, Max)]_EmissionAL0Multipliers ("Multiplier", Vector) = (1, 1, 0, 0)
+		[HideInInspector] s_end_EmissionAL0Multiply ("Strength Multiply", Float) = 0
+		[HideInInspector] s_start_EmissionAL0Add ("Strength Add--{persistent_expand:true,default_expand:false, condition_showS:(_EmissionAL0Enabled==1 && _EnableAudioLink==1)}", Float) = 0
+		[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3, Volume, 4)] _EmissionAL0StrengthBand ("Band", Int) = 0
+		[VectorLabel(Min, Max)]_EmissionAL0StrengthMod ("Strength", Vector) = (0, 0, 0, 0)
+		[HideInInspector] s_end_EmissionAL0Add ("Strength Add", Float) = 0
+		[HideInInspector] s_start_EmissionAL0COut ("Center Out--{persistent_expand:true,default_expand:false, condition_showS:(_EmissionAL0Enabled==1 && _EnableAudioLink==1)}", Float) = 0
+		[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3, Volume, 4)] _AudioLinkEmission0CenterOutBand ("Band", Int) = 0
+		[VectorLabel(Min, Max)] _AudioLinkEmission0CenterOut ("Strength", Vector) = (0, 0, 0, 0)
+		_AudioLinkEmission0CenterOutSize ("Intensity Threshold", Range(0, 1)) = 0
+		_AudioLinkEmission0CenterOutDuration ("Duration", Range(-1, 1)) = 1
+		[HideInInspector] s_end_EmissionAL0COut ("Center Out", Float) = 0
+		[HideInInspector] m_end_emissionOptions ("", Float) = 0
 		[HideInInspector] m_vertexCategory ("Vertex Options", Float) = 0
 		[HideInInspector] m_start_Uzumore (" View Clip Prevention (Uzumore)--{reference_property:_UzumoreCategoryToggle,button_author:{text:sigmal00,action:{type:URL,data:https://github.com/sigmal00},hover:GitHub}}, button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/vertex-options/view-clip-prevention},hover:Documentation}}", Float) = 0
 		[HideInInspector][ThryToggle(POI_UZUMORE)] _UzumoreCategoryToggle (" View Clip Prevention (Uzumore)", Float) = 0
@@ -408,9 +482,11 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 			CGPROGRAM
  #define POI_STYLIZED_StylizedSpecular 
  #define VIGNETTE_MASKED 
+ #define _EMISSION 
  #define _LIGHTINGMODE_REALISTIC 
  #define _STOCHASTICMODE_DELIOT_HEITZ 
  #define PROP_BUMPMAP 
+ #define PROP_EMISSIONMAP 
  #define OPTIMIZER_ENABLED 
 			#pragma target 5.0
 			#pragma multi_compile_fwdbase
@@ -1300,6 +1376,70 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float matcapALChronoPanBand;
 				float matcapALChronoPanSpeed;
 			};
+			#ifdef _EMISSION
+			#if defined(PROP_EMISSIONMAP) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _EmissionMap;
+			#endif
+			float4 _EmissionMap_ST;
+			float2 _EmissionMapPan;
+			float _EmissionMapUV;
+			#if defined(PROP_EMISSIONMASK) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _EmissionMask;
+			#endif
+			float4 _EmissionMask_ST;
+			float2 _EmissionMaskPan;
+			float _EmissionMaskUV;
+			float _EmissionMaskInvert;
+			float _EmissionMaskChannel;
+			float _EmissionMask0GlobalMask;
+			float _EmissionMask0GlobalMaskBlendType;
+			#if defined(PROP_EMISSIONSCROLLINGCURVE) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _EmissionScrollingCurve;
+			#endif
+			float4 _EmissionScrollingCurve_ST;
+			float _EmissionFluorescence;
+			float4 _EmissionColor;
+			float _EmissionBaseColorAsMap;
+			float _EmissionStrength;
+			float _EmissionHueShiftEnabled;
+			float _EmissionHueShiftColorSpace;
+			float _EmissionHueSelectOrShift;
+			float _EmissionSaturation;
+			float _EmissionHueShift;
+			float _EmissionHueShiftSpeed;
+			float _EmissionCenterOutEnabled;
+			float _EmissionCenterOutSpeed;
+			float _EnableGITDEmission;
+			float _GITDEWorldOrMesh;
+			float _GITDEMinEmissionMultiplier;
+			float _GITDEMaxEmissionMultiplier;
+			float _GITDEMinLight;
+			float _GITDEMaxLight;
+			float _EmissionBlinkingEnabled;
+			float _EmissiveBlink_Min;
+			float _EmissiveBlink_Max;
+			float _EmissiveBlink_Velocity;
+			float _EmissionBlinkingOffset;
+			float _ScrollingEmission;
+			float4 _EmissiveScroll_Direction;
+			float _EmissiveScroll_Width;
+			float _EmissiveScroll_Velocity;
+			float _EmissiveScroll_Interval;
+			float _EmissionScrollingOffset;
+			float _EmissionReplace0;
+			float _EmissionScrollingVertexColor;
+			float _EmissionScrollingUseCurve;
+			float _EmissionColorThemeIndex;
+			float _EmissionAL0Enabled;
+			float2 _EmissionAL0StrengthMod;
+			float _EmissionAL0StrengthBand;
+			float2 _AudioLinkEmission0CenterOut;
+			float _AudioLinkEmission0CenterOutSize;
+			float _AudioLinkEmission0CenterOutBand;
+			float _AudioLinkEmission0CenterOutDuration;
+			float2 _EmissionAL0Multipliers;
+			float _EmissionAL0MultipliersBand;
+			#endif
 			#ifdef POI_STYLIZED_StylizedSpecular
 			float _StylizedReflectionMode;
 			#if defined(PROP_HIGHCOLOR_TEX) || !defined(OPTIMIZER_ENABLED)
@@ -3438,6 +3578,149 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				}
 			}
 			#endif
+			float calculateGlowInTheDark(in float minLight, in float maxLight, in float minEmissionMultiplier, in float maxEmissionMultiplier, in float enabled, in float worldOrMesh, in PoiLight poiLight)
+			{
+				float glowInTheDarkMultiplier = 1;
+				if (enabled)
+				{
+					float3 lightValue = worldOrMesh ? calculateluminance(poiLight.finalLighting.rgb) : calculateluminance(poiLight.directColor.rgb);
+					float gitdeAlpha = saturate(inverseLerp(minLight, maxLight, lightValue));
+					glowInTheDarkMultiplier = lerp(minEmissionMultiplier, maxEmissionMultiplier, gitdeAlpha);
+				}
+				return glowInTheDarkMultiplier;
+			}
+			float calculateScrollingEmission(in float3 direction, in float velocity, in float interval, in float scrollWidth, float offset, float3 position)
+			{
+				scrollWidth = max(scrollWidth, 0);
+				float phase = 0;
+				phase = dot(position, direction);
+				phase -= (_Time.y + offset) * velocity;
+				phase /= interval;
+				phase -= floor(phase);
+				phase = saturate(phase);
+				return (pow(phase, scrollWidth) + pow(1 - phase, scrollWidth * 4)) * 0.5;
+			}
+			float calculateBlinkingEmission(in float blinkMin, in float blinkMax, in float blinkVelocity, float offset)
+			{
+				float amplitude = (blinkMax - blinkMin) * 0.5f;
+				float base = blinkMin + amplitude;
+				return sin((_Time.y + offset) * blinkVelocity) * amplitude + base;
+			}
+			void applyALEmmissionStrength(in PoiMods poiMods, inout float emissionStrength, in float2 emissionStrengthMod, in float emissionStrengthBand, in float2 _EmissionALMultipliers, in float _EmissionALMultipliersBand, in float enabled)
+			{
+				#ifdef POI_AUDIOLINK
+				if (poiMods.audioLinkAvailable && enabled)
+				{
+					emissionStrength += lerp(emissionStrengthMod.x, emissionStrengthMod.y, poiMods.audioLink[emissionStrengthBand]);
+					emissionStrength *= lerp(_EmissionALMultipliers.x, _EmissionALMultipliers.y, poiMods.audioLink[_EmissionALMultipliersBand]);
+				}
+				#endif
+			}
+			void applyALCenterOutEmission(in PoiMods poiMods, in float nDotV, inout float emissionStrength, in float size, in float band, in float2 emissionToAdd, in float enabled, in float duration)
+			{
+				#ifdef POI_AUDIOLINK
+				if (poiMods.audioLinkAvailable && enabled)
+				{
+					float intensity;
+					[flatten]
+					if (duration >= 0)
+					{
+						intensity = getBandAtTime(band, saturate(remap(nDotV, 1, 0, 0, duration)), size);
+					}
+					else
+					{
+						duration *= -1;
+						intensity = getBandAtTime(band, saturate(remap(pow(nDotV, 2), 0, 1 + duration, 0, duration)), size);
+					}
+					emissionStrength += lerp(emissionToAdd[0], emissionToAdd[1], intensity);
+				}
+				#endif
+			}
+			#ifdef _EMISSION
+			float3 applyEmission(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiLight poiLight, in PoiCam poiCam, in PoiMods poiMods)
+			{
+				float3 emission0 = 0;
+				float emissionAlpha = 1;
+				float emissionStrength0 = 1.0;
+				float3 emissionColor0 = 0;
+				applyALEmmissionStrength(poiMods, emissionStrength0, float4(0,0,0,0), 0.0, float4(1,1,0,0), 0.0, 0.0);
+				applyALCenterOutEmission(poiMods, poiLight.nDotV, emissionStrength0, 0.0, 0.0, float4(0,0,0,0), 0.0, 1.0);
+				float glowInTheDarkMultiplier0 = calculateGlowInTheDark(0.0, 1.0, 1.0, 0.0, 0.0, 0.0, poiLight);
+				#ifdef POI_GRABPASS
+				float mixBaseColor = 0;
+				#else
+				float mixBaseColor = 0.0;
+				#endif
+				#if defined(PROP_EMISSIONMAP) || !defined(OPTIMIZER_ENABLED)
+				float4 emissionTex = 0;
+				if (!0.0)
+				{
+					emissionTex = POI2D_SAMPLER_PAN(_EmissionMap, _MainTex, poiUV(poiMesh.uv[0.0], float4(1,1,0,0)), float4(0,0,0,0));
+				}
+				else
+				{
+					emissionTex = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMap, _MainTex, ((.5 + poiLight.nDotV * .5) * float4(1,1,0,0).xy) + _Time.x * 5.0);
+				}
+				emissionColor0 = emissionTex.rgb * lerp(1, poiFragData.baseColor, mixBaseColor).rgb * poiThemeColor(poiMods, float4(1,1,1,1).rgb, 0.0);
+				emissionAlpha = emissionTex.a;
+				#else
+				emissionColor0 = lerp(1, poiFragData.baseColor, mixBaseColor).rgb * poiThemeColor(poiMods, float4(1,1,1,1).rgb, 0.0);
+				#endif
+				float3 inverseLighting = saturate((1.0 - poiLight.directColor) * sqrt(poiLight.directColor));
+				emissionColor0 = lerp(emissionColor0.rgb, emissionColor0.rgb * inverseLighting, 0.0);
+				emissionStrength0 *= emissionAlpha;
+				if (0.0)
+				{
+					float3 pos = poiMesh.localPos;
+					if (0.0)
+					{
+						pos = poiMesh.vertexColor.rgb;
+					}
+					if (0.0)
+					{
+						#if defined(PROP_EMISSIONSCROLLINGCURVE) || !defined(OPTIMIZER_ENABLED)
+						emissionStrength0 *= UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionScrollingCurve, _MainTex, poiUV(poiMesh.uv[0.0], float4(1,1,0,0)) + (dot(pos, float4(0,-10,0,0).xyz) * 20.0) + _Time.x * 10.0).r;
+						#endif
+					}
+					else
+					{
+						emissionStrength0 *= calculateScrollingEmission(float4(0,-10,0,0).xyz, 10.0, 20.0, 10.0, 0.0, pos);
+					}
+				}
+				if (0.0)
+				{
+					emissionStrength0 *= calculateBlinkingEmission(0.0, 1.0, 4.0, 0.0);
+				}
+				if(0.0)
+				{
+					emissionColor0 = hueShift(emissionColor0, frac(0.0 + 0.0 * _Time.x), 0.0, 1.0);
+					emissionColor0 = lerp(emissionColor0, dot(emissionColor0, float3(0.3, 0.59, 0.11)), - (0.0));
+				}
+				#if defined(PROP_EMISSIONMASK) || !defined(OPTIMIZER_ENABLED)
+				float emissionMask0 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMask, _MainTex, poiUV(poiMesh.uv[0.0], float4(1,1,0,0)) + _Time.x * float4(0,0,0,0))[0.0];
+				#else
+				float emissionMask0 = 1;
+				#endif
+				if (0.0)
+				{
+					emissionMask0 = 1 - emissionMask0;
+				}
+				if (0.0 > 0)
+				{
+					emissionMask0 = maskBlend(emissionMask0, poiMods.globalMask[0.0 - 1], 2.0);
+				}
+				emissionStrength0 *= glowInTheDarkMultiplier0 * emissionMask0;
+				emission0 = max(emissionStrength0 * emissionColor0, 0);
+				#ifdef POI_DISSOLVE
+				if (_DissolveEmissionSide != 2)
+				{
+					emission0 *= lerp(1 - dissolveAlpha, dissolveAlpha, _DissolveEmissionSide);
+				}
+				#endif
+				poiFragData.emission += emission0;
+				return emission0 * 0.0;
+			}
+			#endif
 			#ifdef POI_STYLIZED_StylizedSpecular
 			void CalculateUTSSpecular(inout PoiFragData poiFragData, in PoiCam poiCam, inout PoiLight poiLight, in PoiMesh poiMesh, in PoiMods poiMods)
 			{
@@ -3866,7 +4149,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float2 mainUV = poiUV(poiMesh.uv[0.0].xy, float4(1,1,0,0));
 				if (0.0)
 				{
-					mainUV = sharpSample(float4(0.0009765625,0.0009765625,1024,1024), mainUV);
+					mainUV = sharpSample(float4(0.001953125,0.001953125,512,512), mainUV);
 				}
 				float4 mainTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_MainTex, _MainTex, mainUV, float4(0,0,0,0), 0.0);
 				mainTexture.a = max(mainTexture.a, 0.0);
@@ -4356,6 +4639,15 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 					CalculateUTSSpecular(poiFragData, poiCam, poiLight, poiMesh, poiMods);
 				}
 				#endif
+				#if defined(_EMISSION)|| defined(POI_EMISSION_1)|| defined(POI_EMISSION_2)|| defined(POI_EMISSION_3)
+				float3 emissionBaseReplace = 0;//<ms_no_postfix>
+				#endif
+				#ifdef _EMISSION
+				emissionBaseReplace += applyEmission(poiFragData, poiMesh, poiLight, poiCam, poiMods);
+				#endif
+				#if defined(_EMISSION)|| defined(POI_EMISSION_1)|| defined(POI_EMISSION_2)|| defined(POI_EMISSION_3)
+				poiFragData.baseColor.rgb = lerp(poiFragData.baseColor.rgb, saturate(emissionBaseReplace), poiMax(emissionBaseReplace));
+				#endif
 				
 				if (0.0)
 				{
@@ -4417,9 +4709,11 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 			CGPROGRAM
  #define POI_STYLIZED_StylizedSpecular 
  #define VIGNETTE_MASKED 
+ #define _EMISSION 
  #define _LIGHTINGMODE_REALISTIC 
  #define _STOCHASTICMODE_DELIOT_HEITZ 
  #define PROP_BUMPMAP 
+ #define PROP_EMISSIONMAP 
  #define OPTIMIZER_ENABLED 
 			#pragma target 5.0
 			#pragma multi_compile_fwdadd_fullshadows
@@ -7292,7 +7586,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float2 mainUV = poiUV(poiMesh.uv[0.0].xy, float4(1,1,0,0));
 				if (0.0)
 				{
-					mainUV = sharpSample(float4(0.0009765625,0.0009765625,1024,1024), mainUV);
+					mainUV = sharpSample(float4(0.001953125,0.001953125,512,512), mainUV);
 				}
 				float4 mainTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_MainTex, _MainTex, mainUV, float4(0,0,0,0), 0.0);
 				mainTexture.a = max(mainTexture.a, 0.0);
@@ -7847,9 +8141,11 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 			CGPROGRAM
  #define POI_STYLIZED_StylizedSpecular 
  #define VIGNETTE_MASKED 
+ #define _EMISSION 
  #define _LIGHTINGMODE_REALISTIC 
  #define _STOCHASTICMODE_DELIOT_HEITZ 
  #define PROP_BUMPMAP 
+ #define PROP_EMISSIONMAP 
  #define OPTIMIZER_ENABLED 
 			#pragma target 5.0
 			#pragma multi_compile_instancing
@@ -9967,7 +10263,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float2 mainUV = poiUV(poiMesh.uv[0.0].xy, float4(1,1,0,0));
 				if (0.0)
 				{
-					mainUV = sharpSample(float4(0.0009765625,0.0009765625,1024,1024), mainUV);
+					mainUV = sharpSample(float4(0.001953125,0.001953125,512,512), mainUV);
 				}
 				float4 mainTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_MainTex, _MainTex, mainUV, float4(0,0,0,0), 0.0);
 				mainTexture.a = max(mainTexture.a, 0.0);
@@ -10061,9 +10357,11 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 			CGPROGRAM
  #define POI_STYLIZED_StylizedSpecular 
  #define VIGNETTE_MASKED 
+ #define _EMISSION 
  #define _LIGHTINGMODE_REALISTIC 
  #define _STOCHASTICMODE_DELIOT_HEITZ 
  #define PROP_BUMPMAP 
+ #define PROP_EMISSIONMAP 
  #define OPTIMIZER_ENABLED 
 			#pragma target 5.0
 			#pragma multi_compile_instancing
@@ -10852,6 +11150,70 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 			float _UVModWorldPos1;
 			float _UVModLocalPos0;
 			float _UVModLocalPos1;
+			#ifdef _EMISSION
+			#if defined(PROP_EMISSIONMAP) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _EmissionMap;
+			#endif
+			float4 _EmissionMap_ST;
+			float2 _EmissionMapPan;
+			float _EmissionMapUV;
+			#if defined(PROP_EMISSIONMASK) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _EmissionMask;
+			#endif
+			float4 _EmissionMask_ST;
+			float2 _EmissionMaskPan;
+			float _EmissionMaskUV;
+			float _EmissionMaskInvert;
+			float _EmissionMaskChannel;
+			float _EmissionMask0GlobalMask;
+			float _EmissionMask0GlobalMaskBlendType;
+			#if defined(PROP_EMISSIONSCROLLINGCURVE) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _EmissionScrollingCurve;
+			#endif
+			float4 _EmissionScrollingCurve_ST;
+			float _EmissionFluorescence;
+			float4 _EmissionColor;
+			float _EmissionBaseColorAsMap;
+			float _EmissionStrength;
+			float _EmissionHueShiftEnabled;
+			float _EmissionHueShiftColorSpace;
+			float _EmissionHueSelectOrShift;
+			float _EmissionSaturation;
+			float _EmissionHueShift;
+			float _EmissionHueShiftSpeed;
+			float _EmissionCenterOutEnabled;
+			float _EmissionCenterOutSpeed;
+			float _EnableGITDEmission;
+			float _GITDEWorldOrMesh;
+			float _GITDEMinEmissionMultiplier;
+			float _GITDEMaxEmissionMultiplier;
+			float _GITDEMinLight;
+			float _GITDEMaxLight;
+			float _EmissionBlinkingEnabled;
+			float _EmissiveBlink_Min;
+			float _EmissiveBlink_Max;
+			float _EmissiveBlink_Velocity;
+			float _EmissionBlinkingOffset;
+			float _ScrollingEmission;
+			float4 _EmissiveScroll_Direction;
+			float _EmissiveScroll_Width;
+			float _EmissiveScroll_Velocity;
+			float _EmissiveScroll_Interval;
+			float _EmissionScrollingOffset;
+			float _EmissionReplace0;
+			float _EmissionScrollingVertexColor;
+			float _EmissionScrollingUseCurve;
+			float _EmissionColorThemeIndex;
+			float _EmissionAL0Enabled;
+			float2 _EmissionAL0StrengthMod;
+			float _EmissionAL0StrengthBand;
+			float2 _AudioLinkEmission0CenterOut;
+			float _AudioLinkEmission0CenterOutSize;
+			float _AudioLinkEmission0CenterOutBand;
+			float _AudioLinkEmission0CenterOutDuration;
+			float2 _EmissionAL0Multipliers;
+			float _EmissionAL0MultipliersBand;
+			#endif
 			struct appdata
 			{
 				float4 vertex : POSITION;
@@ -12691,6 +13053,149 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float3 viewDirection = normalize(lerp(getCameraPosition().xyz, _WorldSpaceCameraPos.xyz, 1.0) - poiMesh.worldPos.xyz) * - 1;
 				return lerp(MonoPanoProjection(viewDirection), StereoPanoProjection(viewDirection), 0.0);
 			}
+			float calculateGlowInTheDark(in float minLight, in float maxLight, in float minEmissionMultiplier, in float maxEmissionMultiplier, in float enabled, in float worldOrMesh, in PoiLight poiLight)
+			{
+				float glowInTheDarkMultiplier = 1;
+				if (enabled)
+				{
+					float3 lightValue = worldOrMesh ? calculateluminance(poiLight.finalLighting.rgb) : calculateluminance(poiLight.directColor.rgb);
+					float gitdeAlpha = saturate(inverseLerp(minLight, maxLight, lightValue));
+					glowInTheDarkMultiplier = lerp(minEmissionMultiplier, maxEmissionMultiplier, gitdeAlpha);
+				}
+				return glowInTheDarkMultiplier;
+			}
+			float calculateScrollingEmission(in float3 direction, in float velocity, in float interval, in float scrollWidth, float offset, float3 position)
+			{
+				scrollWidth = max(scrollWidth, 0);
+				float phase = 0;
+				phase = dot(position, direction);
+				phase -= (_Time.y + offset) * velocity;
+				phase /= interval;
+				phase -= floor(phase);
+				phase = saturate(phase);
+				return (pow(phase, scrollWidth) + pow(1 - phase, scrollWidth * 4)) * 0.5;
+			}
+			float calculateBlinkingEmission(in float blinkMin, in float blinkMax, in float blinkVelocity, float offset)
+			{
+				float amplitude = (blinkMax - blinkMin) * 0.5f;
+				float base = blinkMin + amplitude;
+				return sin((_Time.y + offset) * blinkVelocity) * amplitude + base;
+			}
+			void applyALEmmissionStrength(in PoiMods poiMods, inout float emissionStrength, in float2 emissionStrengthMod, in float emissionStrengthBand, in float2 _EmissionALMultipliers, in float _EmissionALMultipliersBand, in float enabled)
+			{
+				#ifdef POI_AUDIOLINK
+				if (poiMods.audioLinkAvailable && enabled)
+				{
+					emissionStrength += lerp(emissionStrengthMod.x, emissionStrengthMod.y, poiMods.audioLink[emissionStrengthBand]);
+					emissionStrength *= lerp(_EmissionALMultipliers.x, _EmissionALMultipliers.y, poiMods.audioLink[_EmissionALMultipliersBand]);
+				}
+				#endif
+			}
+			void applyALCenterOutEmission(in PoiMods poiMods, in float nDotV, inout float emissionStrength, in float size, in float band, in float2 emissionToAdd, in float enabled, in float duration)
+			{
+				#ifdef POI_AUDIOLINK
+				if (poiMods.audioLinkAvailable && enabled)
+				{
+					float intensity;
+					[flatten]
+					if (duration >= 0)
+					{
+						intensity = getBandAtTime(band, saturate(remap(nDotV, 1, 0, 0, duration)), size);
+					}
+					else
+					{
+						duration *= -1;
+						intensity = getBandAtTime(band, saturate(remap(pow(nDotV, 2), 0, 1 + duration, 0, duration)), size);
+					}
+					emissionStrength += lerp(emissionToAdd[0], emissionToAdd[1], intensity);
+				}
+				#endif
+			}
+			#ifdef _EMISSION
+			float3 applyEmission(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiLight poiLight, in PoiCam poiCam, in PoiMods poiMods)
+			{
+				float3 emission0 = 0;
+				float emissionAlpha = 1;
+				float emissionStrength0 = 1.0;
+				float3 emissionColor0 = 0;
+				applyALEmmissionStrength(poiMods, emissionStrength0, float4(0,0,0,0), 0.0, float4(1,1,0,0), 0.0, 0.0);
+				applyALCenterOutEmission(poiMods, poiLight.nDotV, emissionStrength0, 0.0, 0.0, float4(0,0,0,0), 0.0, 1.0);
+				float glowInTheDarkMultiplier0 = calculateGlowInTheDark(0.0, 1.0, 1.0, 0.0, 0.0, 0.0, poiLight);
+				#ifdef POI_GRABPASS
+				float mixBaseColor = 0;
+				#else
+				float mixBaseColor = 0.0;
+				#endif
+				#if defined(PROP_EMISSIONMAP) || !defined(OPTIMIZER_ENABLED)
+				float4 emissionTex = 0;
+				if (!0.0)
+				{
+					emissionTex = POI2D_SAMPLER_PAN(_EmissionMap, _MainTex, poiUV(poiMesh.uv[0.0], float4(1,1,0,0)), float4(0,0,0,0));
+				}
+				else
+				{
+					emissionTex = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMap, _MainTex, ((.5 + poiLight.nDotV * .5) * float4(1,1,0,0).xy) + _Time.x * 5.0);
+				}
+				emissionColor0 = emissionTex.rgb * lerp(1, poiFragData.baseColor, mixBaseColor).rgb * poiThemeColor(poiMods, float4(1,1,1,1).rgb, 0.0);
+				emissionAlpha = emissionTex.a;
+				#else
+				emissionColor0 = lerp(1, poiFragData.baseColor, mixBaseColor).rgb * poiThemeColor(poiMods, float4(1,1,1,1).rgb, 0.0);
+				#endif
+				float3 inverseLighting = saturate((1.0 - poiLight.directColor) * sqrt(poiLight.directColor));
+				emissionColor0 = lerp(emissionColor0.rgb, emissionColor0.rgb * inverseLighting, 0.0);
+				emissionStrength0 *= emissionAlpha;
+				if (0.0)
+				{
+					float3 pos = poiMesh.localPos;
+					if (0.0)
+					{
+						pos = poiMesh.vertexColor.rgb;
+					}
+					if (0.0)
+					{
+						#if defined(PROP_EMISSIONSCROLLINGCURVE) || !defined(OPTIMIZER_ENABLED)
+						emissionStrength0 *= UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionScrollingCurve, _MainTex, poiUV(poiMesh.uv[0.0], float4(1,1,0,0)) + (dot(pos, float4(0,-10,0,0).xyz) * 20.0) + _Time.x * 10.0).r;
+						#endif
+					}
+					else
+					{
+						emissionStrength0 *= calculateScrollingEmission(float4(0,-10,0,0).xyz, 10.0, 20.0, 10.0, 0.0, pos);
+					}
+				}
+				if (0.0)
+				{
+					emissionStrength0 *= calculateBlinkingEmission(0.0, 1.0, 4.0, 0.0);
+				}
+				if(0.0)
+				{
+					emissionColor0 = hueShift(emissionColor0, frac(0.0 + 0.0 * _Time.x), 0.0, 1.0);
+					emissionColor0 = lerp(emissionColor0, dot(emissionColor0, float3(0.3, 0.59, 0.11)), - (0.0));
+				}
+				#if defined(PROP_EMISSIONMASK) || !defined(OPTIMIZER_ENABLED)
+				float emissionMask0 = UNITY_SAMPLE_TEX2D_SAMPLER(_EmissionMask, _MainTex, poiUV(poiMesh.uv[0.0], float4(1,1,0,0)) + _Time.x * float4(0,0,0,0))[0.0];
+				#else
+				float emissionMask0 = 1;
+				#endif
+				if (0.0)
+				{
+					emissionMask0 = 1 - emissionMask0;
+				}
+				if (0.0 > 0)
+				{
+					emissionMask0 = maskBlend(emissionMask0, poiMods.globalMask[0.0 - 1], 2.0);
+				}
+				emissionStrength0 *= glowInTheDarkMultiplier0 * emissionMask0;
+				emission0 = max(emissionStrength0 * emissionColor0, 0);
+				#ifdef POI_DISSOLVE
+				if (_DissolveEmissionSide != 2)
+				{
+					emission0 *= lerp(1 - dissolveAlpha, dissolveAlpha, _DissolveEmissionSide);
+				}
+				#endif
+				poiFragData.emission += emission0;
+				return emission0 * 0.0;
+			}
+			#endif
 			float4 frag(VertexOut i, uint facing : SV_IsFrontFace) : SV_Target
 			{
 				UNITY_SETUP_INSTANCE_ID(i);
@@ -12793,7 +13298,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float2 mainUV = poiUV(poiMesh.uv[0.0].xy, float4(1,1,0,0));
 				if (0.0)
 				{
-					mainUV = sharpSample(float4(0.0009765625,0.0009765625,1024,1024), mainUV);
+					mainUV = sharpSample(float4(0.001953125,0.001953125,512,512), mainUV);
 				}
 				float4 mainTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_MainTex, _MainTex, mainUV, float4(0,0,0,0), 0.0);
 				mainTexture.a = max(mainTexture.a, 0.0);
@@ -12858,6 +13363,15 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 					if (2.0 == 4) poiFragData.alpha = saturate(poiFragData.alpha - alphaMask);
 				}
 				applyAlphaOptions(poiFragData, poiMesh, poiCam, poiMods);
+				#if defined(_EMISSION)|| defined(POI_EMISSION_1)|| defined(POI_EMISSION_2)|| defined(POI_EMISSION_3)
+				float3 emissionBaseReplace = 0;//<ms_no_postfix>
+				#endif
+				#ifdef _EMISSION
+				emissionBaseReplace += applyEmission(poiFragData, poiMesh, poiLight, poiCam, poiMods);
+				#endif
+				#if defined(_EMISSION)|| defined(POI_EMISSION_1)|| defined(POI_EMISSION_2)|| defined(POI_EMISSION_3)
+				poiFragData.baseColor.rgb = lerp(poiFragData.baseColor.rgb, saturate(emissionBaseReplace), poiMax(emissionBaseReplace));
+				#endif
 				
 				if (0.0)
 				{

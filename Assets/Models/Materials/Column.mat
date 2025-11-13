@@ -28,13 +28,15 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _LIGHTINGMODE_REALISTIC
+  - _STOCHASTICMODE_DELIOT_HEITZ
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
   stringTagMap:
-    AllLockedGUIDS: 41da569a906d45540b747275b1dd6fcb,2e3fb14090d9bb643b939d621caabb3d,d88c4c86227ebee4994f474e6c93807d
+    AllLockedGUIDS: 41da569a906d45540b747275b1dd6fcb,2e3fb14090d9bb643b939d621caabb3d
     OriginalShader: .poiyomi/Poiyomi Toon World
     OriginalShaderGUID: 1b58d372fe360874a8fb767d53f955b0
     RenderType: Opaque
@@ -2716,8 +2718,8 @@ Material:
     - m_end_videoEffects: 0
     - m_end_voronoi: 0
     - m_end_voronoiRandom: 0
-    - m_lightingCategory: 1
-    - m_mainCategory: 1
+    - m_lightingCategory: 0
+    - m_mainCategory: 0
     - m_modifierCategory: 0
     - m_renderingCategory: 0
     - m_specialFXCategory: 0

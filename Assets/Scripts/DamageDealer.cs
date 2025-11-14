@@ -8,10 +8,10 @@ public class DamageDealer : MonoBehaviour
     [Tooltip("How much damage this hit inflicts.")]
     [SerializeField] float damageAmount = 1f;
 
-    [Tooltip("Should this damage only occur once, then destroy the object?")]
+    [Tooltip("Destroy After Dealing Damage?")]
     [SerializeField] bool destroyOnHit = false;
 
-    [Tooltip("Optional delay before self-destruction (for particles, etc).")]
+    [Tooltip("Optional delay before self-destruction.")]
     [SerializeField] float destroyDelay = 0f;
 
     [Tooltip("If true, ignores multiple rapid collisions with the same object.")]

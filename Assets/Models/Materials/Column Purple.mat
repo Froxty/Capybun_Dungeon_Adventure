@@ -30,6 +30,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords:
   - BSSBLOOMFOGTYPE_HEIGHT
+  - FINALPASS
   - POI_STYLIZED_StylizedSpecular
   - VIGNETTE_MASKED
   - _LIGHTINGMODE_REALISTIC
@@ -42,8 +43,9 @@ Material:
   m_CustomRenderQueue: 2000
   stringTagMap:
     AllLockedGUIDS: 93b05ec390469bf41ba26986fe0f3a59
-    OriginalKeywords: BSSBLOOMFOGTYPE_HEIGHT POI_STYLIZED_StylizedSpecular VIGNETTE_MASKED
-      _LIGHTINGMODE_REALISTIC _RIM2STYLE_POIYOMI _RIMSTYLE_POIYOMI _STOCHASTICMODE_DELIOT_HEITZ
+    OriginalKeywords: BSSBLOOMFOGTYPE_HEIGHT FINALPASS POI_STYLIZED_StylizedSpecular
+      VIGNETTE_MASKED _LIGHTINGMODE_REALISTIC _RIM2STYLE_POIYOMI _RIMSTYLE_POIYOMI
+      _STOCHASTICMODE_DELIOT_HEITZ
     OriginalShader: .poiyomi/Poiyomi Toon World
     OriginalShaderGUID: 1b58d372fe360874a8fb767d53f955b0
     RenderType: Opaque
@@ -71,6 +73,18 @@ Material:
     - _DFG:
         m_Texture: {fileID: 2800000, guid: b6b1f1fa6be1ce54f8bcd5428c160a28, type: 3}
         m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 2800000, guid: 79f71abc102ceee41b100412ff443a12, type: 3}
+        m_Scale: {x: 9, y: 3.5}
+        m_Offset: {x: 0, y: 0}
+    - _DetailTex:
+        m_Texture: {fileID: 2800000, guid: 8db15a5f51f51c14f84db140be1243a6, type: 3}
+        m_Scale: {x: 9, y: 7}
         m_Offset: {x: 0, y: 0}
     - _HighColor_Tex:
         m_Texture: {fileID: 0}
@@ -722,20 +736,20 @@ Material:
     - _DepthTextureUV: 0
     - _DetailAlbedoScale: 1
     - _DetailBrightness: 1
-    - _DetailEnabled: 0
+    - _DetailEnabled: 1
     - _DetailMaskStochastic: 0
     - _DetailMaskUV: 0
     - _DetailNormalGlobalMask: 0
     - _DetailNormalGlobalMaskBlendType: 2
-    - _DetailNormalMapScale: 1
-    - _DetailNormalMapStochastic: 0
+    - _DetailNormalMapScale: 8.26
+    - _DetailNormalMapStochastic: 1
     - _DetailNormalMapUV: 0
     - _DetailNormalScale: 1
     - _DetailSmoothnessScale: 1
     - _DetailTexGlobalMask: 0
     - _DetailTexGlobalMaskBlendType: 2
-    - _DetailTexIntensity: 1
-    - _DetailTexStochastic: 0
+    - _DetailTexIntensity: 0.21
+    - _DetailTexStochastic: 1
     - _DetailTexUV: 0
     - _DetailTintThemeIndex: 0
     - _DiffusionProfile: 0
@@ -2752,7 +2766,7 @@ Material:
     - m_start_Decal3AudioLink: 0
     - m_start_DecalSection: 0
     - m_start_DepthBulge: 0
-    - m_start_DetailOptions: 0
+    - m_start_DetailOptions: 1
     - m_start_DistortionAudioLink: 0
     - m_start_FXProximityColor: 0
     - m_start_FlipbookAudioLink: 0

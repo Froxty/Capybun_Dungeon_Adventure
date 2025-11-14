@@ -24,19 +24,30 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Column
-  m_Shader: {fileID: 4800000, guid: 582925bcfe1e1f8418e0ff759056cb88, type: 3}
+  m_Shader: {fileID: 4800000, guid: 96f2b96f2655f39418ca47efa181327a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
+  - BSSBLOOMFOGTYPE_HEIGHT
+  - FINALPASS
+  - MOCHIE_PBR
+  - POI_MATCAP0
+  - POI_STYLIZED_StylizedSpecular
+  - VIGNETTE_MASKED
   - _LIGHTINGMODE_REALISTIC
+  - _RIM2STYLE_POIYOMI
+  - _RIMSTYLE_POIYOMI
   - _STOCHASTICMODE_DELIOT_HEITZ
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
   stringTagMap:
-    AllLockedGUIDS: 41da569a906d45540b747275b1dd6fcb,2e3fb14090d9bb643b939d621caabb3d
+    AllLockedGUIDS: 2e3fb14090d9bb643b939d621caabb3d
+    OriginalKeywords: BSSBLOOMFOGTYPE_HEIGHT FINALPASS MOCHIE_PBR POI_MATCAP0 POI_STYLIZED_StylizedSpecular
+      VIGNETTE_MASKED _LIGHTINGMODE_REALISTIC _RIM2STYLE_POIYOMI _RIMSTYLE_POIYOMI
+      _STOCHASTICMODE_DELIOT_HEITZ
     OriginalShader: .poiyomi/Poiyomi Toon World
     OriginalShaderGUID: 1b58d372fe360874a8fb767d53f955b0
     RenderType: Opaque
@@ -57,13 +68,29 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 5b7f1d6755a163d43b1721803052b5ec, type: 3}
+    - _AnisotropyMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 79f71abc102ceee41b100412ff443a12, type: 3}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _DFG:
         m_Texture: {fileID: 2800000, guid: b6b1f1fa6be1ce54f8bcd5428c160a28, type: 3}
         m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 2800000, guid: 79f71abc102ceee41b100412ff443a12, type: 3}
+        m_Scale: {x: 9, y: 4}
+        m_Offset: {x: 0, y: 0}
+    - _DetailTex:
+        m_Texture: {fileID: 2800000, guid: 8db15a5f51f51c14f84db140be1243a6, type: 3}
+        m_Scale: {x: 9, y: 7}
         m_Offset: {x: 0, y: 0}
     - _HighColor_Tex:
         m_Texture: {fileID: 0}
@@ -89,7 +116,27 @@ Material:
         m_Texture: {fileID: 2800000, guid: a9a166f3e1aa94343b0a56d6e191fda2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Matcap:
+        m_Texture: {fileID: 2800000, guid: 9a5b0382cca03024aa1d81b0cbed0b27, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Matcap0NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MatcapMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MochieMetallicMaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MochieReflCube:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -715,20 +762,20 @@ Material:
     - _DepthTextureUV: 0
     - _DetailAlbedoScale: 1
     - _DetailBrightness: 1
-    - _DetailEnabled: 0
+    - _DetailEnabled: 1
     - _DetailMaskStochastic: 0
     - _DetailMaskUV: 0
     - _DetailNormalGlobalMask: 0
     - _DetailNormalGlobalMaskBlendType: 2
     - _DetailNormalMapScale: 1
-    - _DetailNormalMapStochastic: 0
+    - _DetailNormalMapStochastic: 1
     - _DetailNormalMapUV: 0
     - _DetailNormalScale: 1
     - _DetailSmoothnessScale: 1
     - _DetailTexGlobalMask: 0
     - _DetailTexGlobalMaskBlendType: 2
-    - _DetailTexIntensity: 1
-    - _DetailTexStochastic: 0
+    - _DetailTexIntensity: 0.21
+    - _DetailTexStochastic: 1
     - _DetailTexUV: 0
     - _DetailTintThemeIndex: 0
     - _DiffusionProfile: 0
@@ -1682,7 +1729,7 @@ Material:
     - _Matcap4TPSMaskStrength: 1
     - _Matcap4UVMode: 1
     - _Matcap4UVToBlend: 1
-    - _MatcapAdd: 0
+    - _MatcapAdd: 0.113
     - _MatcapAddToLight: 0
     - _MatcapAlphaOverride: 0
     - _MatcapApplyToAlphaBlendType: 0
@@ -1693,7 +1740,7 @@ Material:
     - _MatcapBorder: 0.5
     - _MatcapColorThemeIndex: 0
     - _MatcapEmissionStrength: 0
-    - _MatcapEnable: 0
+    - _MatcapEnable: 1
     - _MatcapHueSelectOrShift: 1
     - _MatcapHueShift: 0
     - _MatcapHueShiftColorSpace: 0
@@ -1701,7 +1748,7 @@ Material:
     - _MatcapHueShiftSpeed: 0
     - _MatcapIntensity: 1
     - _MatcapLightColorMix: 0
-    - _MatcapLightMask: 0
+    - _MatcapLightMask: 0.374
     - _MatcapMaskChannel: 0
     - _MatcapMaskGlobalMask: 0
     - _MatcapMaskGlobalMaskBlendType: 2
@@ -1710,9 +1757,9 @@ Material:
     - _MatcapMaskSmoothnessChannel: 3
     - _MatcapMaskUV: 0
     - _MatcapMixed: 0
-    - _MatcapMultiply: 0
+    - _MatcapMultiply: 1
     - _MatcapNormal: 1
-    - _MatcapReplace: 1
+    - _MatcapReplace: 0
     - _MatcapRotation: 0
     - _MatcapScreen: 0
     - _MatcapSmoothness: 1
@@ -1730,7 +1777,7 @@ Material:
     - _MirrorTextureEnabled: 0
     - _MirrorTextureForceEnabled: 0
     - _MirrorTextureUV: 0
-    - _MochieBRDF: 0
+    - _MochieBRDF: 1
     - _MochieForceFallback: 0
     - _MochieGSAAEnabled: 1
     - _MochieLitFallback: 1
@@ -1753,7 +1800,7 @@ Material:
     - _MochieRoughnessMapInvert: 0
     - _MochieRoughnessMultiplier: 1
     - _MochieRoughnessMultiplier2: 1
-    - _MochieSmoothnessGlobalMask: 0
+    - _MochieSmoothnessGlobalMask: 4
     - _MochieSmoothnessGlobalMaskBlendType: 2
     - _MochieSpecularMaskInvert: 0
     - _MochieSpecularStrength: 1
@@ -2194,7 +2241,7 @@ Material:
     - _ScrollingEmission1: 0
     - _ScrollingEmission2: 0
     - _ScrollingEmission3: 0
-    - _Set_HighColorMaskChannel: 1
+    - _Set_HighColorMaskChannel: 0
     - _Set_HighColorMaskUV: 0
     - _Set_Rim2LightMaskChannel: 1
     - _Set_Rim2LightMaskUV: 0
@@ -2718,9 +2765,9 @@ Material:
     - m_end_videoEffects: 0
     - m_end_voronoi: 0
     - m_end_voronoiRandom: 0
-    - m_lightingCategory: 0
-    - m_mainCategory: 0
-    - m_modifierCategory: 0
+    - m_lightingCategory: 1
+    - m_mainCategory: 1
+    - m_modifierCategory: 1
     - m_renderingCategory: 0
     - m_specialFXCategory: 0
     - m_start_ALDecalSpectrum: 0
@@ -2745,7 +2792,7 @@ Material:
     - m_start_Decal3AudioLink: 0
     - m_start_DecalSection: 0
     - m_start_DepthBulge: 0
-    - m_start_DetailOptions: 0
+    - m_start_DetailOptions: 1
     - m_start_DistortionAudioLink: 0
     - m_start_FXProximityColor: 0
     - m_start_FlipbookAudioLink: 0
@@ -2837,7 +2884,7 @@ Material:
     - m_start_flipBook: 0
     - m_start_glitter: 0
     - m_start_internalparallax: 0
-    - m_start_matcap: 0
+    - m_start_matcap: 1
     - m_start_mirrorOptions: 0
     - m_start_normalCorrect: 0
     - m_start_outlineAlphaBlending: 0

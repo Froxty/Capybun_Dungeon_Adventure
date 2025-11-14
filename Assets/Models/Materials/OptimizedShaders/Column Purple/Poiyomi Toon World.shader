@@ -70,6 +70,34 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 		[HideInInspector]_AlphaMaskValue ("Blend Offset", Float) = 0
 		[HideInInspector][ToggleUI]_AlphaMaskInvert ("Invert", Float) = 0
 		_Cutoff ("Alpha Cutoff", Range(0, 1.001)) = 0.5
+		[HideInInspector] m_start_DetailOptions (" Detail Normals & Texture--{reference_property:_DetailEnabled,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/color-and-normals/details},hover:Documentation}}", Float) = 0
+		[HideInInspector][ThryToggle(FINALPASS)]_DetailEnabled ("Enable", Float) = 0
+		[sRGBWarning][ThryRGBAPacker(R Texture Mask, G Normal Mask, B Nothing, A Nothing, linear, false)]_DetailMask ("Detail Mask (Expand)--{reference_properties:[_DetailMaskPan, _DetailMaskUV, _DetailMaskStochastic]}", 2D) = "white" { }
+		[HideInInspector][Vector2]_DetailMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+		[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos, 5, Local Pos, 8, Polar UV, 6, Distorted UV, 7, Matcap, 9)] _DetailMaskUV ("UV", Int) = 0
+		[HideInInspector][ToggleUI]_DetailMaskStochastic ("Stochastic Sampling", Float) = 0
+		[HideInInspector] s_start_DetailTexture ("Detail Texture--{persistent_expand:false,default_expand:true}", Float) = 0
+		_DetailTint ("Tint--{reference_property:_DetailTintThemeIndex}", Color) = (1, 1, 1)
+		[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _DetailTintThemeIndex ("", Int) = 0
+		[sRGBWarning(true)]_DetailTex ("Detail Texture--{reference_properties:[_DetailTexPan, _DetailTexUV, _DetailTexStochastic]}", 2D) = "gray" { }
+		[HideInInspector][Vector2]_DetailTexPan ("Panning", Vector) = (0, 0, 0, 0)
+		[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos, 5, Local Pos, 8, Polar UV, 6, Distorted UV, 7, Matcap, 9)] _DetailTexUV ("UV", Int) = 0
+		[HideInInspector][ToggleUI]_DetailTexStochastic ("Stochastic Sampling", Float) = 0
+		_DetailTexIntensity ("Intensity", Range(0, 10)) = 1
+		_DetailBrightness ("Brightness", Range(0, 2)) = 1
+		[ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _DetailTexGlobalMask ("Global Mask--{reference_property:_DetailTexGlobalMaskBlendType}", Int) = 0
+		[HideInInspector][ThryWideEnum(Add, 7, Subtract, 1, Multiply, 2, Divide, 3, Min, 4, Max, 5, Average, 6, Replace, 0)]_DetailTexGlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+		[HideInInspector] s_end_DetailTexture ("Detail Texture", Float) = 0
+		[HideInInspector] s_start_DetailNormal ("Detail Normal--{persistent_expand:false,default_expand:true}", Float) = 0
+		[Normal]_DetailNormalMap ("Detail Normal--{reference_properties:[_DetailNormalMapPan, _DetailNormalMapUV, _DetailNormalMapScale, _DetailNormalMapStochastic]}", 2D) = "bump" { }
+		[HideInInspector]_DetailNormalMapScale ("Intensity", Range(0, 10)) = 1
+		[HideInInspector][Vector2]_DetailNormalMapPan ("Panning", Vector) = (0, 0, 0, 0)
+		[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos, 5, Local Pos, 8, Polar UV, 6, Distorted UV, 7, Matcap, 9)] _DetailNormalMapUV ("UV", Int) = 0
+		[HideInInspector][ToggleUI]_DetailNormalMapStochastic ("Stochastic Sampling", Float) = 0
+		[ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _DetailNormalGlobalMask ("Global Mask--{reference_property:_DetailNormalGlobalMaskBlendType}", Int) = 0
+		[HideInInspector][ThryWideEnum(Add, 7, Subtract, 1, Multiply, 2, Divide, 3, Min, 4, Max, 5, Average, 6, Replace, 0)]_DetailNormalGlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+		[HideInInspector] s_end_DetailNormal ("Detail Normal", Float) = 0
+		[HideInInspector] m_end_DetailOptions ("Details", Float) = 0
 		[HideInInspector] m_start_Alpha ("Alpha Options--{button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/color-and-normals/alpha-options},hover:Documentation}}", Float) = 0
 		[ToggleUI]_AlphaForceOpaque ("Force Opaque", Float) = 1
 		_AlphaMod ("Alpha Mod", Range(-1, 1)) = 0.0
@@ -406,11 +434,14 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 			BlendOp [_BlendOp], [_BlendOpAlpha]
 			Blend [_SrcBlend] [_DstBlend], [_SrcBlendAlpha] [_DstBlendAlpha]
 			CGPROGRAM
+ #define FINALPASS 
  #define POI_STYLIZED_StylizedSpecular 
  #define VIGNETTE_MASKED 
  #define _LIGHTINGMODE_REALISTIC 
  #define _STOCHASTICMODE_DELIOT_HEITZ 
  #define PROP_BUMPMAP 
+ #define PROP_DETAILTEX 
+ #define PROP_DETAILNORMALMAP 
  #define OPTIMIZER_ENABLED 
 			#pragma target 5.0
 			#pragma multi_compile_fwdbase
@@ -1276,6 +1307,38 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 			float _UVModWorldPos1;
 			float _UVModLocalPos0;
 			float _UVModLocalPos1;
+			#ifdef FINALPASS
+			#if defined(PROP_DETAILMASK) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _DetailMask;
+			#endif
+			float4 _DetailMask_ST;
+			float2 _DetailMaskPan;
+			float _DetailMaskUV;
+			float _DetailMaskStochastic;
+			#if defined(PROP_DETAILNORMALMAP) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _DetailNormalMap;
+			#endif
+			float4 _DetailNormalMap_ST;
+			float2 _DetailNormalMapPan;
+			float _DetailNormalMapUV;
+			float _DetailNormalMapScale;
+			float _DetailNormalMapStochastic;
+			float _DetailNormalGlobalMask;
+			float _DetailNormalGlobalMaskBlendType;
+			#if defined(PROP_DETAILTEX) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _DetailTex;
+			#endif
+			float4 _DetailTex_ST;
+			float2 _DetailTexPan;
+			float _DetailTexUV;
+			float _DetailTexStochastic;
+			float3 _DetailTint;
+			float _DetailTintThemeIndex;
+			float _DetailTexIntensity;
+			float _DetailBrightness;
+			float _DetailTexGlobalMask;
+			float _DetailTexGlobalMaskBlendType;
+			#endif
 			float _ShadowStrength;
 			float _LightingIgnoreAmbientColor;
 			float3 _LightingShadowColor;
@@ -3210,6 +3273,43 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 				float3 viewDirection = normalize(lerp(getCameraPosition().xyz, _WorldSpaceCameraPos.xyz, 1.0) - poiMesh.worldPos.xyz) * - 1;
 				return lerp(MonoPanoProjection(viewDirection), StereoPanoProjection(viewDirection), 0.0);
 			}
+			#ifdef FINALPASS
+			void ApplyDetailColor(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiMods poiMods)
+			{
+				#if defined(PROP_DETAILTEX) || !defined(OPTIMIZER_ENABLED)
+				half3 detailTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_DetailTex, _MainTex, poiUV(poiMesh.uv[0.0], float4(9,7,0,0)), float4(0,0,0,0), 1.0).rgb * poiThemeColor(poiMods, float4(1,1,1,1), 0.0);
+				#else
+				half3 detailTexture = 0.21763764082 * poiThemeColor(poiMods, float4(1,1,1,1), 0.0);
+				#endif
+				poiFragData.baseColor.rgb *= LerpWhiteTo(detailTexture * 1.0 * unity_ColorSpaceDouble.rgb, poiMods.detailMask.r * 0.21);
+			}
+			void ApplyDetailNormal(inout PoiMods poiMods, inout PoiMesh poiMesh)
+			{
+				#if defined(PROP_DETAILMASK) || !defined(OPTIMIZER_ENABLED)
+				poiMods.detailMask = POI2D_SAMPLER_PAN_STOCHASTIC(_DetailMask, _MainTex, poiUV(poiMesh.uv[0.0], float4(1,1,0,0)), float4(0,0,0,0), 0.0).rg;
+				#else
+				poiMods.detailMask = 1;
+				#endif
+				#ifdef POI_BACKFACE
+				if (!poiMesh.isFrontFace)
+				{
+					poiMods.detailMask.rg *= 1.0;
+				}
+				#endif
+				if (0.0 > 0)
+				{
+					poiMods.detailMask.r = maskBlend(poiMods.detailMask.r, poiMods.globalMask[0.0 - 1], 2.0);
+				}
+				if (0.0 > 0)
+				{
+					poiMods.detailMask.g = maskBlend(poiMods.detailMask.g, poiMods.globalMask[0.0 - 1], 2.0);
+				}
+				#if defined(PROP_DETAILNORMALMAP) || !defined(OPTIMIZER_ENABLED)
+				half3 detailNormal = UnpackScaleNormal(POI2D_SAMPLER_PAN_STOCHASTIC(_DetailNormalMap, _MainTex, poiUV(poiMesh.uv[0.0], float4(9,3.5,0,0)), float4(0,0,0,0), 1.0), 8.26 * poiMods.detailMask.g);
+				poiMesh.tangentSpaceNormal = BlendNormals(detailNormal, poiMesh.tangentSpaceNormal);
+				#endif
+			}
+			#endif
 			#ifdef VIGNETTE_MASKED
 			#ifdef _LIGHTINGMODE_REALISTIC
 			#if defined(LIGHTMAP_ON) && defined(SHADOWS_SCREEN)
@@ -3875,6 +3975,9 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 				#else
 				poiMesh.tangentSpaceNormal = UnpackNormal(float4(0.5, 0.5, 1, 1));
 				#endif
+				#if defined(FINALPASS) && !defined(UNITY_PASS_SHADOWCASTER) && !defined(POI_PASS_OUTLINE)
+				ApplyDetailNormal(poiMods, poiMesh);
+				#endif
 				float3 tangentSpaceNormal = UnpackNormal(float4(0.5, 0.5, 1, 1));
 				poiMesh.normals[0] = normalize(
 				tangentSpaceNormal.x * poiMesh.tangent[0] +
@@ -4315,6 +4418,9 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 					if (2.0 == 4) poiFragData.alpha = saturate(poiFragData.alpha - alphaMask);
 				}
 				applyAlphaOptions(poiFragData, poiMesh, poiCam, poiMods);
+				#ifdef FINALPASS
+				ApplyDetailColor(poiFragData, poiMesh, poiMods);
+				#endif
 				#if defined(_LIGHTINGMODE_SHADEMAP) && defined(VIGNETTE_MASKED)
 				#ifndef POI_PASS_OUTLINE
 				#endif
@@ -4415,11 +4521,14 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 			BlendOp [_AddBlendOp], [_AddBlendOpAlpha]
 			Blend [_AddSrcBlend] [_AddDstBlend], [_AddSrcBlendAlpha] [_AddDstBlendAlpha]
 			CGPROGRAM
+ #define FINALPASS 
  #define POI_STYLIZED_StylizedSpecular 
  #define VIGNETTE_MASKED 
  #define _LIGHTINGMODE_REALISTIC 
  #define _STOCHASTICMODE_DELIOT_HEITZ 
  #define PROP_BUMPMAP 
+ #define PROP_DETAILTEX 
+ #define PROP_DETAILNORMALMAP 
  #define OPTIMIZER_ENABLED 
 			#pragma target 5.0
 			#pragma multi_compile_fwdadd_fullshadows
@@ -4706,6 +4815,38 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 			float _UVModWorldPos1;
 			float _UVModLocalPos0;
 			float _UVModLocalPos1;
+			#ifdef FINALPASS
+			#if defined(PROP_DETAILMASK) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _DetailMask;
+			#endif
+			float4 _DetailMask_ST;
+			float2 _DetailMaskPan;
+			float _DetailMaskUV;
+			float _DetailMaskStochastic;
+			#if defined(PROP_DETAILNORMALMAP) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _DetailNormalMap;
+			#endif
+			float4 _DetailNormalMap_ST;
+			float2 _DetailNormalMapPan;
+			float _DetailNormalMapUV;
+			float _DetailNormalMapScale;
+			float _DetailNormalMapStochastic;
+			float _DetailNormalGlobalMask;
+			float _DetailNormalGlobalMaskBlendType;
+			#if defined(PROP_DETAILTEX) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _DetailTex;
+			#endif
+			float4 _DetailTex_ST;
+			float2 _DetailTexPan;
+			float _DetailTexUV;
+			float _DetailTexStochastic;
+			float3 _DetailTint;
+			float _DetailTintThemeIndex;
+			float _DetailTexIntensity;
+			float _DetailBrightness;
+			float _DetailTexGlobalMask;
+			float _DetailTexGlobalMaskBlendType;
+			#endif
 			float _ShadowStrength;
 			float _LightingIgnoreAmbientColor;
 			float3 _LightingShadowColor;
@@ -6636,6 +6777,43 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 				float3 viewDirection = normalize(lerp(getCameraPosition().xyz, _WorldSpaceCameraPos.xyz, 1.0) - poiMesh.worldPos.xyz) * - 1;
 				return lerp(MonoPanoProjection(viewDirection), StereoPanoProjection(viewDirection), 0.0);
 			}
+			#ifdef FINALPASS
+			void ApplyDetailColor(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiMods poiMods)
+			{
+				#if defined(PROP_DETAILTEX) || !defined(OPTIMIZER_ENABLED)
+				half3 detailTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_DetailTex, _MainTex, poiUV(poiMesh.uv[0.0], float4(9,7,0,0)), float4(0,0,0,0), 1.0).rgb * poiThemeColor(poiMods, float4(1,1,1,1), 0.0);
+				#else
+				half3 detailTexture = 0.21763764082 * poiThemeColor(poiMods, float4(1,1,1,1), 0.0);
+				#endif
+				poiFragData.baseColor.rgb *= LerpWhiteTo(detailTexture * 1.0 * unity_ColorSpaceDouble.rgb, poiMods.detailMask.r * 0.21);
+			}
+			void ApplyDetailNormal(inout PoiMods poiMods, inout PoiMesh poiMesh)
+			{
+				#if defined(PROP_DETAILMASK) || !defined(OPTIMIZER_ENABLED)
+				poiMods.detailMask = POI2D_SAMPLER_PAN_STOCHASTIC(_DetailMask, _MainTex, poiUV(poiMesh.uv[0.0], float4(1,1,0,0)), float4(0,0,0,0), 0.0).rg;
+				#else
+				poiMods.detailMask = 1;
+				#endif
+				#ifdef POI_BACKFACE
+				if (!poiMesh.isFrontFace)
+				{
+					poiMods.detailMask.rg *= 1.0;
+				}
+				#endif
+				if (0.0 > 0)
+				{
+					poiMods.detailMask.r = maskBlend(poiMods.detailMask.r, poiMods.globalMask[0.0 - 1], 2.0);
+				}
+				if (0.0 > 0)
+				{
+					poiMods.detailMask.g = maskBlend(poiMods.detailMask.g, poiMods.globalMask[0.0 - 1], 2.0);
+				}
+				#if defined(PROP_DETAILNORMALMAP) || !defined(OPTIMIZER_ENABLED)
+				half3 detailNormal = UnpackScaleNormal(POI2D_SAMPLER_PAN_STOCHASTIC(_DetailNormalMap, _MainTex, poiUV(poiMesh.uv[0.0], float4(9,3.5,0,0)), float4(0,0,0,0), 1.0), 8.26 * poiMods.detailMask.g);
+				poiMesh.tangentSpaceNormal = BlendNormals(detailNormal, poiMesh.tangentSpaceNormal);
+				#endif
+			}
+			#endif
 			#ifdef VIGNETTE_MASKED
 			#ifdef _LIGHTINGMODE_REALISTIC
 			#if defined(LIGHTMAP_ON) && defined(SHADOWS_SCREEN)
@@ -7301,6 +7479,9 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 				#else
 				poiMesh.tangentSpaceNormal = UnpackNormal(float4(0.5, 0.5, 1, 1));
 				#endif
+				#if defined(FINALPASS) && !defined(UNITY_PASS_SHADOWCASTER) && !defined(POI_PASS_OUTLINE)
+				ApplyDetailNormal(poiMods, poiMesh);
+				#endif
 				float3 tangentSpaceNormal = UnpackNormal(float4(0.5, 0.5, 1, 1));
 				poiMesh.normals[0] = normalize(
 				tangentSpaceNormal.x * poiMesh.tangent[0] +
@@ -7741,6 +7922,9 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 					if (2.0 == 4) poiFragData.alpha = saturate(poiFragData.alpha - alphaMask);
 				}
 				applyAlphaOptions(poiFragData, poiMesh, poiCam, poiMods);
+				#ifdef FINALPASS
+				ApplyDetailColor(poiFragData, poiMesh, poiMods);
+				#endif
 				#if defined(_LIGHTINGMODE_SHADEMAP) && defined(VIGNETTE_MASKED)
 				#ifndef POI_PASS_OUTLINE
 				#endif
@@ -7845,11 +8029,14 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 			BlendOp [_BlendOp], [_BlendOpAlpha]
 			Blend [_SrcBlend] [_DstBlend], [_SrcBlendAlpha] [_DstBlendAlpha]
 			CGPROGRAM
+ #define FINALPASS 
  #define POI_STYLIZED_StylizedSpecular 
  #define VIGNETTE_MASKED 
  #define _LIGHTINGMODE_REALISTIC 
  #define _STOCHASTICMODE_DELIOT_HEITZ 
  #define PROP_BUMPMAP 
+ #define PROP_DETAILTEX 
+ #define PROP_DETAILNORMALMAP 
  #define OPTIMIZER_ENABLED 
 			#pragma target 5.0
 			#pragma multi_compile_instancing
@@ -9976,6 +10163,9 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 				#else
 				poiMesh.tangentSpaceNormal = UnpackNormal(float4(0.5, 0.5, 1, 1));
 				#endif
+				#if defined(FINALPASS) && !defined(UNITY_PASS_SHADOWCASTER) && !defined(POI_PASS_OUTLINE)
+				ApplyDetailNormal(poiMods, poiMesh);
+				#endif
 				float3 tangentSpaceNormal = UnpackNormal(float4(0.5, 0.5, 1, 1));
 				poiMesh.normals[0] = normalize(
 				tangentSpaceNormal.x * poiMesh.tangent[0] +
@@ -10059,11 +10249,14 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 			BlendOp [_BlendOp], [_BlendOpAlpha]
 			Blend [_SrcBlend] [_DstBlend], [_SrcBlendAlpha] [_DstBlendAlpha]
 			CGPROGRAM
+ #define FINALPASS 
  #define POI_STYLIZED_StylizedSpecular 
  #define VIGNETTE_MASKED 
  #define _LIGHTINGMODE_REALISTIC 
  #define _STOCHASTICMODE_DELIOT_HEITZ 
  #define PROP_BUMPMAP 
+ #define PROP_DETAILTEX 
+ #define PROP_DETAILNORMALMAP 
  #define OPTIMIZER_ENABLED 
 			#pragma target 5.0
 			#pragma multi_compile_instancing
@@ -10852,6 +11045,38 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 			float _UVModWorldPos1;
 			float _UVModLocalPos0;
 			float _UVModLocalPos1;
+			#ifdef FINALPASS
+			#if defined(PROP_DETAILMASK) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _DetailMask;
+			#endif
+			float4 _DetailMask_ST;
+			float2 _DetailMaskPan;
+			float _DetailMaskUV;
+			float _DetailMaskStochastic;
+			#if defined(PROP_DETAILNORMALMAP) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _DetailNormalMap;
+			#endif
+			float4 _DetailNormalMap_ST;
+			float2 _DetailNormalMapPan;
+			float _DetailNormalMapUV;
+			float _DetailNormalMapScale;
+			float _DetailNormalMapStochastic;
+			float _DetailNormalGlobalMask;
+			float _DetailNormalGlobalMaskBlendType;
+			#if defined(PROP_DETAILTEX) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _DetailTex;
+			#endif
+			float4 _DetailTex_ST;
+			float2 _DetailTexPan;
+			float _DetailTexUV;
+			float _DetailTexStochastic;
+			float3 _DetailTint;
+			float _DetailTintThemeIndex;
+			float _DetailTexIntensity;
+			float _DetailBrightness;
+			float _DetailTexGlobalMask;
+			float _DetailTexGlobalMaskBlendType;
+			#endif
 			struct appdata
 			{
 				float4 vertex : POSITION;
@@ -12691,6 +12916,43 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 				float3 viewDirection = normalize(lerp(getCameraPosition().xyz, _WorldSpaceCameraPos.xyz, 1.0) - poiMesh.worldPos.xyz) * - 1;
 				return lerp(MonoPanoProjection(viewDirection), StereoPanoProjection(viewDirection), 0.0);
 			}
+			#ifdef FINALPASS
+			void ApplyDetailColor(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiMods poiMods)
+			{
+				#if defined(PROP_DETAILTEX) || !defined(OPTIMIZER_ENABLED)
+				half3 detailTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_DetailTex, _MainTex, poiUV(poiMesh.uv[0.0], float4(9,7,0,0)), float4(0,0,0,0), 1.0).rgb * poiThemeColor(poiMods, float4(1,1,1,1), 0.0);
+				#else
+				half3 detailTexture = 0.21763764082 * poiThemeColor(poiMods, float4(1,1,1,1), 0.0);
+				#endif
+				poiFragData.baseColor.rgb *= LerpWhiteTo(detailTexture * 1.0 * unity_ColorSpaceDouble.rgb, poiMods.detailMask.r * 0.21);
+			}
+			void ApplyDetailNormal(inout PoiMods poiMods, inout PoiMesh poiMesh)
+			{
+				#if defined(PROP_DETAILMASK) || !defined(OPTIMIZER_ENABLED)
+				poiMods.detailMask = POI2D_SAMPLER_PAN_STOCHASTIC(_DetailMask, _MainTex, poiUV(poiMesh.uv[0.0], float4(1,1,0,0)), float4(0,0,0,0), 0.0).rg;
+				#else
+				poiMods.detailMask = 1;
+				#endif
+				#ifdef POI_BACKFACE
+				if (!poiMesh.isFrontFace)
+				{
+					poiMods.detailMask.rg *= 1.0;
+				}
+				#endif
+				if (0.0 > 0)
+				{
+					poiMods.detailMask.r = maskBlend(poiMods.detailMask.r, poiMods.globalMask[0.0 - 1], 2.0);
+				}
+				if (0.0 > 0)
+				{
+					poiMods.detailMask.g = maskBlend(poiMods.detailMask.g, poiMods.globalMask[0.0 - 1], 2.0);
+				}
+				#if defined(PROP_DETAILNORMALMAP) || !defined(OPTIMIZER_ENABLED)
+				half3 detailNormal = UnpackScaleNormal(POI2D_SAMPLER_PAN_STOCHASTIC(_DetailNormalMap, _MainTex, poiUV(poiMesh.uv[0.0], float4(9,3.5,0,0)), float4(0,0,0,0), 1.0), 8.26 * poiMods.detailMask.g);
+				poiMesh.tangentSpaceNormal = BlendNormals(detailNormal, poiMesh.tangentSpaceNormal);
+				#endif
+			}
+			#endif
 			float4 frag(VertexOut i, uint facing : SV_IsFrontFace) : SV_Target
 			{
 				UNITY_SETUP_INSTANCE_ID(i);
@@ -12802,6 +13064,9 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 				#else
 				poiMesh.tangentSpaceNormal = UnpackNormal(float4(0.5, 0.5, 1, 1));
 				#endif
+				#if defined(FINALPASS) && !defined(UNITY_PASS_SHADOWCASTER) && !defined(POI_PASS_OUTLINE)
+				ApplyDetailNormal(poiMods, poiMesh);
+				#endif
 				float3 tangentSpaceNormal = UnpackNormal(float4(0.5, 0.5, 1, 1));
 				poiMesh.normals[0] = normalize(
 				tangentSpaceNormal.x * poiMesh.tangent[0] +
@@ -12858,6 +13123,9 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/93b05ec390469bf41ba26986fe0f3a
 					if (2.0 == 4) poiFragData.alpha = saturate(poiFragData.alpha - alphaMask);
 				}
 				applyAlphaOptions(poiFragData, poiMesh, poiCam, poiMods);
+				#ifdef FINALPASS
+				ApplyDetailColor(poiFragData, poiMesh, poiMods);
+				#endif
 				
 				if (0.0)
 				{

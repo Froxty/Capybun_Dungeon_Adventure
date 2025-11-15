@@ -23,32 +23,30 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Decor Glowing
-  m_Shader: {fileID: 4800000, guid: 1f4b438597e87f048bc40936f2c1a9b5, type: 3}
+  m_Name: Stone Decor
+  m_Shader: {fileID: 4800000, guid: e6cb84493a11dd342bfdbc163b9c5702, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
   - BSSBLOOMFOGTYPE_HEIGHT
   - MOCHIE_PBR
-  - POI_GLOBALMASK_TEXTURES
   - POI_MATCAP0
   - POI_STYLIZED_StylizedSpecular
   - VIGNETTE_MASKED
-  - _EMISSION
   - _LIGHTINGMODE_REALISTIC
   - _RIM2STYLE_POIYOMI
   - _RIMSTYLE_POIYOMI
   - _STOCHASTICMODE_DELIOT_HEITZ
-  m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_LightmapFlags: 6
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
   stringTagMap:
-    AllLockedGUIDS: 3d475d4a439c5b0469b1c6c4823014b0
-    OriginalKeywords: BSSBLOOMFOGTYPE_HEIGHT MOCHIE_PBR POI_GLOBALMASK_TEXTURES POI_MATCAP0
-      POI_STYLIZED_StylizedSpecular VIGNETTE_MASKED _EMISSION _LIGHTINGMODE_REALISTIC
-      _RIM2STYLE_POIYOMI _RIMSTYLE_POIYOMI _STOCHASTICMODE_DELIOT_HEITZ
+    AllLockedGUIDS: e1acb42081654e44c88dc1f457a6cd04
+    OriginalKeywords: BSSBLOOMFOGTYPE_HEIGHT MOCHIE_PBR POI_MATCAP0 POI_STYLIZED_StylizedSpecular
+      VIGNETTE_MASKED _LIGHTINGMODE_REALISTIC _RIM2STYLE_POIYOMI _RIMSTYLE_POIYOMI
+      _STOCHASTICMODE_DELIOT_HEITZ
     OriginalShader: .poiyomi/Poiyomi Toon World
     OriginalShaderGUID: 1b58d372fe360874a8fb767d53f955b0
     RenderType: Opaque
@@ -74,39 +72,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 15c0995d973f78b45afd14601993c8ec, type: 3}
+        m_Texture: {fileID: 2800000, guid: 72f2187ec5d869c489388ddac5618166, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DFG:
         m_Texture: {fileID: 2800000, guid: b6b1f1fa6be1ce54f8bcd5428c160a28, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionScrollingCurve:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _GlobalMaskTexture0:
-        m_Texture: {fileID: 2800000, guid: 6131c64945ff55942a8ff97902a04cee, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _GlobalMaskTexture1:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _GlobalMaskTexture2:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _GlobalMaskTexture3:
-        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HighColor_Tex:
@@ -130,7 +100,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 68f1ea96dcd7b5542ae0291de3351d6f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d1d1a5958d1cf5408842b631aef48b7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Matcap:
@@ -879,7 +849,7 @@ Material:
     - _EmissionBaseColorAsMap1: 0
     - _EmissionBaseColorAsMap2: 0
     - _EmissionBaseColorAsMap3: 0
-    - _EmissionBlinkingEnabled: 1
+    - _EmissionBlinkingEnabled: 0
     - _EmissionBlinkingEnabled1: 0
     - _EmissionBlinkingEnabled2: 0
     - _EmissionBlinkingEnabled3: 0
@@ -899,7 +869,7 @@ Material:
     - _EmissionColor2ThemeIndex: 0
     - _EmissionColor3ThemeIndex: 0
     - _EmissionColorThemeIndex: 0
-    - _EmissionFluorescence: 1
+    - _EmissionFluorescence: 0
     - _EmissionFluorescence1: 0
     - _EmissionFluorescence2: 0
     - _EmissionFluorescence3: 0
@@ -967,11 +937,11 @@ Material:
     - _EmissionScrollingVertexColor1: 0
     - _EmissionScrollingVertexColor2: 0
     - _EmissionScrollingVertexColor3: 0
-    - _EmissionStrength: 0.15
+    - _EmissionStrength: 0
     - _EmissionStrength1: 0
     - _EmissionStrength2: 0
     - _EmissionStrength3: 0
-    - _EmissiveBlink_Max: 2
+    - _EmissiveBlink_Max: 1
     - _EmissiveBlink_Max1: 1
     - _EmissiveBlink_Max2: 1
     - _EmissiveBlink_Max3: 1
@@ -979,7 +949,7 @@ Material:
     - _EmissiveBlink_Min1: 0
     - _EmissiveBlink_Min2: 0
     - _EmissiveBlink_Min3: 0
-    - _EmissiveBlink_Velocity: 1
+    - _EmissiveBlink_Velocity: 4
     - _EmissiveBlink_Velocity1: 4
     - _EmissiveBlink_Velocity2: 4
     - _EmissiveBlink_Velocity3: 4
@@ -1009,7 +979,7 @@ Material:
     - _EnableDissolveAudioLink: 0
     - _EnableDistortion: 0
     - _EnableDistortionAudioLink: 0
-    - _EnableEmission: 1
+    - _EnableEmission: 0
     - _EnableEmission1: 0
     - _EnableEmission2: 0
     - _EnableEmission3: 0
@@ -1086,7 +1056,7 @@ Material:
     - _ForgotToLockMaterial: 1
     - _GGXAnisotropics: 0
     - _GIEmissionMultiplier: 1
-    - _GITDEMaxEmissionMultiplier: 1
+    - _GITDEMaxEmissionMultiplier: 0
     - _GITDEMaxEmissionMultiplier1: 0
     - _GITDEMaxEmissionMultiplier2: 0
     - _GITDEMaxEmissionMultiplier3: 0
@@ -1094,7 +1064,7 @@ Material:
     - _GITDEMaxLight1: 1
     - _GITDEMaxLight2: 1
     - _GITDEMaxLight3: 1
-    - _GITDEMinEmissionMultiplier: 0
+    - _GITDEMinEmissionMultiplier: 1
     - _GITDEMinEmissionMultiplier1: 1
     - _GITDEMinEmissionMultiplier2: 1
     - _GITDEMinEmissionMultiplier3: 1
@@ -1346,7 +1316,7 @@ Material:
     - _GlobalMaskTexture2UV: 0
     - _GlobalMaskTexture3Split: 0
     - _GlobalMaskTexture3UV: 0
-    - _GlobalMaskTexturesEnable: 1
+    - _GlobalMaskTexturesEnable: 0
     - _GlobalMaskToggleOff_0: 0
     - _GlobalMaskToggleOff_1: 0
     - _GlobalMaskToggleOff_10: 0
@@ -1798,7 +1768,7 @@ Material:
     - _MochieForceFallback: 0
     - _MochieGSAAEnabled: 1
     - _MochieLitFallback: 1
-    - _MochieMetallicGlobalMask: 1
+    - _MochieMetallicGlobalMask: 0
     - _MochieMetallicGlobalMaskBlendType: 2
     - _MochieMetallicMapInvert: 0
     - _MochieMetallicMapsMetallicChannel: 0
@@ -1808,16 +1778,16 @@ Material:
     - _MochieMetallicMapsStochastic: 0
     - _MochieMetallicMapsUV: 0
     - _MochieMetallicMasksUV: 0
-    - _MochieMetallicMultiplier: 1
+    - _MochieMetallicMultiplier: 0
     - _MochieReflectionMaskInvert: 0
     - _MochieReflectionStrength: 1
     - _MochieReflectionStrengthGlobalMask: 0
     - _MochieReflectionStrengthGlobalMaskBlendType: 2
     - _MochieReflectionTintThemeIndex: 0
     - _MochieRoughnessMapInvert: 0
-    - _MochieRoughnessMultiplier: 1
+    - _MochieRoughnessMultiplier: 0.388
     - _MochieRoughnessMultiplier2: 1
-    - _MochieSmoothnessGlobalMask: 2
+    - _MochieSmoothnessGlobalMask: 0
     - _MochieSmoothnessGlobalMaskBlendType: 2
     - _MochieSpecularMaskInvert: 0
     - _MochieSpecularStrength: 1
@@ -2784,9 +2754,9 @@ Material:
     - m_end_voronoiRandom: 0
     - m_lightingCategory: 1
     - m_mainCategory: 1
-    - m_modifierCategory: 1
-    - m_renderingCategory: 0
-    - m_specialFXCategory: 1
+    - m_modifierCategory: 0
+    - m_renderingCategory: 1
+    - m_specialFXCategory: 0
     - m_start_ALDecalSpectrum: 0
     - m_start_ALVolumeColor: 0
     - m_start_Alpha: 0
@@ -2897,7 +2867,7 @@ Material:
     - m_start_emission1Options: 0
     - m_start_emission2Options: 0
     - m_start_emission3Options: 0
-    - m_start_emissionOptions: 1
+    - m_start_emissionOptions: 0
     - m_start_flipBook: 0
     - m_start_glitter: 0
     - m_start_internalparallax: 0
@@ -3224,7 +3194,7 @@ Material:
     - s_start_EmissionAL3Add: 0
     - s_start_EmissionAL3COut: 0
     - s_start_EmissionAL3Multiply: 0
-    - s_start_EmissionBlinking0: 1
+    - s_start_EmissionBlinking0: 0
     - s_start_EmissionBlinking1: 0
     - s_start_EmissionBlinking2: 0
     - s_start_EmissionBlinking3: 0
@@ -3557,7 +3527,7 @@ Material:
     - _EmissionAL2StrengthMod: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionAL3Multipliers: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionAL3StrengthMod: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 1, g: 0.91762197, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor1: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor2: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor3: {r: 1, g: 1, b: 1, a: 1}

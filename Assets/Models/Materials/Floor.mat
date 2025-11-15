@@ -2809,7 +2809,7 @@ Material:
     - m_start_Decal3AudioLink: 0
     - m_start_DecalSection: 0
     - m_start_DepthBulge: 0
-    - m_start_DetailOptions: 1
+    - m_start_DetailOptions: 0
     - m_start_DistortionAudioLink: 0
     - m_start_FXProximityColor: 0
     - m_start_FlipbookAudioLink: 0
@@ -2884,7 +2884,7 @@ Material:
     - m_start_audioLinkOverrides: 0
     - m_start_backFace: 0
     - m_start_backlight: 0
-    - m_start_bakedLighting: 0
+    - m_start_bakedLighting: 1
     - m_start_blending: 0
     - m_start_brdf: 0
     - m_start_clearCoat: 0

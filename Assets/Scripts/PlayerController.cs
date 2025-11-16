@@ -17,9 +17,16 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public SpriteRenderer sprite;
 
-    //[Header("Animator Trigger Names")]
-    string interactTrigger = "Interact"; 
-    string dieTrigger = "Die";           
+    [Header("Interact Sound")]
+    [Tooltip("AudioSource used to play the interact sound.")]
+    public AudioSource interactAudioSource;
+
+    [Tooltip("Sound played when the player uses Interact.")]
+    public AudioClip interactSFX;
+
+    // Animator Trigger Names
+    string interactTrigger = "Interact";
+    string dieTrigger = "Die";
 
     [Header("Input Routing")]
     public bool acceptInput = true; // toggled via SetAcceptInput()
@@ -29,15 +36,22 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     bool isGrounded;
     bool faceRight = true;  // last horizontal facing (true = right)
+    Transform spriteTransform;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        if (whatIsGround.value == 0) whatIsGround = LayerMask.GetMask("Ground");
-        if (!sprite) sprite = GetComponentInChildren<SpriteRenderer>();
+        if (whatIsGround.value == 0)
+            whatIsGround = LayerMask.GetMask("Ground");
+
+        // Auto-find sprite in children if not assigned
+        if (!sprite)
+            sprite = GetComponentInChildren<SpriteRenderer>();
+
+        if (sprite)
+            spriteTransform = sprite.transform;
     }
 
-    /// Enable/disable player control. Clears cached input and halts horizontal drift.
     bool BodyFree() => rb && !rb.isKinematic;
 
     public void SetAcceptInput(bool value)
@@ -55,7 +69,6 @@ public class PlayerController : MonoBehaviour
         if (animator) animator.SetBool("IsMoving", false);
     }
 
-
     // --- Input System callbacks ---
     public void OnMove(InputValue v)
     {
@@ -65,9 +78,48 @@ public class PlayerController : MonoBehaviour
 
     public void OnCast(InputValue v)
     {
-        if (!acceptInput) return;
-        Debug.Log("Interact pressed");
-        if (animator) animator.SetTrigger(interactTrigger);
+        if (!acceptInput || !v.isPressed) return;
+        Debug.Log("[Player] Interact pressed.");
+
+        // Play interact animation
+        if (animator)
+            animator.SetTrigger(interactTrigger);
+
+        // Play interact SFX
+        if (interactAudioSource && interactSFX)
+            interactAudioSource.PlayOneShot(interactSFX);
+
+        // Check for interactables in range
+        Collider[] hits = Physics.OverlapSphere(transform.position, 1.5f);
+        foreach (var hit in hits)
+        {
+            // 1) Gate opener
+            var opener = hit.GetComponent<InteractGateOpener>();
+            if (opener != null)
+            {
+                Debug.Log("[Player] Found InteractGateOpener — calling TryInteract()");
+                opener.TryInteract();
+                return; // stop after first successful interact
+            }
+
+            // 2) Item spawner
+            var spawner = hit.GetComponent<InteractSpawnItem>();
+            if (spawner != null)
+            {
+                Debug.Log("[Player] Found InteractSpawnItem — calling TryInteract()");
+                spawner.TryInteract();
+                return;
+            }
+
+            // 3) Key door
+            var keyDoor = hit.GetComponent<InteractKeyDoorOpener>();
+            if (keyDoor != null)
+            {
+                Debug.Log("[Player] Found InteractKeyDoorOpener — calling TryInteract()");
+                keyDoor.TryInteract();
+                return;
+            }
+        }
     }
 
     public void OnDebugDie(InputValue v)
@@ -96,7 +148,6 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(input.x, 0f, input.y) * moveSpeed;
         rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
     }
-
 
     void Update()
     {
@@ -127,8 +178,13 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsGrounded", isGrounded);
         }
 
-        // Sprites Face Camera [Test]
-        if (Camera.main) transform.forward = Camera.main.transform.forward;
+        // Sprites Face Camera (only rotate child visual)
+        if (Camera.main && spriteTransform)
+        {
+            Vector3 fwd = Camera.main.transform.forward;
+            
+            spriteTransform.forward = fwd;
+        }
     }
 
     void OnDrawGizmosSelected()

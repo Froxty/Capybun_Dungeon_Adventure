@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class ProfileHudSwapper : MonoBehaviour
@@ -16,6 +17,13 @@ public class ProfileHudSwapper : MonoBehaviour
     [Header("Health Bars")]
     public RectTransform capyHealth;
     public RectTransform bunHealth; 
+
+    [Header("Frame Color Settings")]
+    public Image capyFrameImage; // Assign the Image on Capy_Frame
+    public Image bunFrameImage;  // Assign the Image on Bun_Frame
+    public Color activeColor = Color.white;
+    public Color inactiveColor = Color.black;
+    public float colorFadeDuration = 0.25f;
 
     [Header("Tween")]
     public float duration = 0.25f;
@@ -35,9 +43,9 @@ public class ProfileHudSwapper : MonoBehaviour
         // Cache portrait layouts from current scene state
         if (initialCapyActive)
         {
-            capyPortraitBig = Read(capyFrame);  // Capy is big now
-            bunPortraitSmall = Read(bunFrame);   // Bun is small now
-            bunPortraitBig = capyPortraitBig;  // opposite states
+            capyPortraitBig = Read(capyFrame);
+            bunPortraitSmall = Read(bunFrame);
+            bunPortraitBig = capyPortraitBig;
             capyPortraitSmall = bunPortraitSmall;
         }
         else
@@ -66,16 +74,19 @@ public class ProfileHudSwapper : MonoBehaviour
                 bunHealthSmall = capyHealthSmall;
             }
         }
+
+        // Initialize starting colors
+        if (capyFrameImage) capyFrameImage.color = initialCapyActive ? activeColor : inactiveColor;
+        if (bunFrameImage)  bunFrameImage.color  = initialCapyActive ? inactiveColor : activeColor;
     }
-    
-    /// <summary>Call with true when Capy is active, false when Bun is active.</summary>
+
     public void Apply(bool capyActive)
     {
         // 1) Sorting order
         if (capyCanvas) capyCanvas.sortingOrder = capyActive ? activeOrder : inactiveOrder;
         if (bunCanvas)  bunCanvas.sortingOrder  = capyActive ? inactiveOrder : activeOrder;
 
-        // 2) Portrait tweens (swap to the other layout)
+        // 2) Portrait tweens
         TweenTo(capyFrame, capyActive ? capyPortraitBig  : capyPortraitSmall);
         TweenTo(bunFrame,  capyActive ? bunPortraitSmall : bunPortraitBig);
 
@@ -85,7 +96,13 @@ public class ProfileHudSwapper : MonoBehaviour
             TweenTo(capyHealth, capyActive ? capyHealthBig  : capyHealthSmall);
             TweenTo(bunHealth,  capyActive ? bunHealthSmall : bunHealthBig);
         }
+
+        // 4) Frame color fade
+        if (capyFrameImage) capyFrameImage.DOColor(capyActive ? activeColor : inactiveColor, colorFadeDuration);
+        if (bunFrameImage)  bunFrameImage.DOColor(capyActive ? inactiveColor : activeColor, colorFadeDuration);
     }
+
+    // Helpers
     struct RectLayout { public Vector2 anchorMin, anchorMax, pivot, anchoredPos, sizeDelta; }
 
     static RectLayout Read(RectTransform t) => new RectLayout

@@ -68,8 +68,98 @@ MonoBehaviour:
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-140897763-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-2244359292267835485-65998116
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-2244359292202761593-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-678019348-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-6714379553706271247-881213034
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-3342053388087740061-1274183383
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-7720730003403401245-242543245
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-2490769843600072995-1030269561
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-3623580396419737746-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1092832795517227978-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-808580333-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-2457016941492725090-782583399
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-993244167-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-419421069-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-2126707179-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-143337837-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1864766424-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1261156618-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1729421169-0
         values:
         - colorIndex: 7
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 4
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 4
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: Canvas Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: Settings Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 1
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0

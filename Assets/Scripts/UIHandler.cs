@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class UIHandler : MonoBehaviour
 {
     [Header("UI Slot Images (in order)")]
-    [SerializeField] Image[] slotImages;  // 4 entries, one per slot
+    [SerializeField] Image[] slotImages;
 
     [Header("Optional empty sprite")]
     [SerializeField] Sprite emptySprite;
@@ -69,7 +69,7 @@ public class UIHandler : MonoBehaviour
                 }
                 else
                 {
-                    img.enabled = false; // fully hide empty slots
+                    img.enabled = false; 
                 }
             }
         }

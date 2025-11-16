@@ -38,9 +38,7 @@ public class InventorySystem : MonoBehaviour
         {
             slots = new InventorySlotData[slotCount];
             for (int i = 0; i < slotCount; i++)
-            {
                 slots[i] = new InventorySlotData();
-            }
         }
     }
 
@@ -50,7 +48,6 @@ public class InventorySystem : MonoBehaviour
         if (amount <= 0 || string.IsNullOrEmpty(itemId))
             return false;
 
-        // For now: each pickup occupies its own slot (no stacking logic)
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].IsEmpty)
@@ -65,6 +62,48 @@ public class InventorySystem : MonoBehaviour
         }
 
         Debug.Log("Inventory full, could not add " + itemId);
+        return false;
+    }
+
+    /// <summary>Returns true if any slot contains this itemId.</summary>
+    public bool HasItem(string itemId)
+    {
+        if (string.IsNullOrEmpty(itemId)) return false;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            var slot = slots[i];
+            if (!slot.IsEmpty && slot.itemId == itemId)
+                return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>Consumes amount of this itemId from the first matching slot. Returns true if successful.</summary>
+    public bool ConsumeItem(string itemId, int amount = 1)
+    {
+        if (amount <= 0 || string.IsNullOrEmpty(itemId)) return false;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            var slot = slots[i];
+            if (slot.IsEmpty || slot.itemId != itemId)
+                continue;
+
+            slot.count -= amount;
+            if (slot.count <= 0)
+            {
+                slot.count = 0;
+                slot.itemId = null;
+                slot.icon = null;
+            }
+
+            // 🔔 TELL UI TO REFRESH
+            OnInventoryChanged?.Invoke();
+            return true;
+        }
+
         return false;
     }
 

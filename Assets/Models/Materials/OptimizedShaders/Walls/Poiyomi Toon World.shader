@@ -5516,7 +5516,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float2 mainUV = poiUV(poiMesh.uv[0.0].xy, float4(1,1,0,0));
 				if (0.0)
 				{
-					mainUV = sharpSample(float4(0.0009765625,0.0009765625,1024,1024), mainUV);
+					mainUV = sharpSample(float4(0.0004882813,0.0004882813,2048,2048), mainUV);
 				}
 				float4 mainTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_MainTex, _MainTex, mainUV, float4(0,0,0,0), 0.0);
 				mainTexture.a = max(mainTexture.a, 0.0);
@@ -10281,7 +10281,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float2 mainUV = poiUV(poiMesh.uv[0.0].xy, float4(1,1,0,0));
 				if (0.0)
 				{
-					mainUV = sharpSample(float4(0.0009765625,0.0009765625,1024,1024), mainUV);
+					mainUV = sharpSample(float4(0.0004882813,0.0004882813,2048,2048), mainUV);
 				}
 				float4 mainTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_MainTex, _MainTex, mainUV, float4(0,0,0,0), 0.0);
 				mainTexture.a = max(mainTexture.a, 0.0);
@@ -13113,7 +13113,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float2 mainUV = poiUV(poiMesh.uv[0.0].xy, float4(1,1,0,0));
 				if (0.0)
 				{
-					mainUV = sharpSample(float4(0.0009765625,0.0009765625,1024,1024), mainUV);
+					mainUV = sharpSample(float4(0.0004882813,0.0004882813,2048,2048), mainUV);
 				}
 				float4 mainTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_MainTex, _MainTex, mainUV, float4(0,0,0,0), 0.0);
 				mainTexture.a = max(mainTexture.a, 0.0);
@@ -16659,7 +16659,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi Toon World/61c997b144920a047aa20b74ab0163
 				float2 mainUV = poiUV(poiMesh.uv[0.0].xy, float4(1,1,0,0));
 				if (0.0)
 				{
-					mainUV = sharpSample(float4(0.0009765625,0.0009765625,1024,1024), mainUV);
+					mainUV = sharpSample(float4(0.0004882813,0.0004882813,2048,2048), mainUV);
 				}
 				float4 mainTexture = POI2D_SAMPLER_PAN_STOCHASTIC(_MainTex, _MainTex, mainUV, float4(0,0,0,0), 0.0);
 				mainTexture.a = max(mainTexture.a, 0.0);

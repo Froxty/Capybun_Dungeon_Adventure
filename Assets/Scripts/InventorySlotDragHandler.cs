@@ -46,7 +46,7 @@ public class InventorySlotDragHandler : MonoBehaviour,
         dragIcon.sprite = slot.icon;
         dragIcon.raycastTarget = false;   
 
-        // ⬇ NEW LOGIC: MATCH SLOT SIZE
+        // NEW LOGIC: MATCH SLOT SIZE
         RectTransform slotRect = GetComponent<RectTransform>();
         RectTransform dragRect = dragIcon.rectTransform;
 

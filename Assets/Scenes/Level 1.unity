@@ -5187,11 +5187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1955916780706173971, guid: 0d2a576dc32d73b42ad4b47dc4ff4e91, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000003325939
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1955916780706173971, guid: 0d2a576dc32d73b42ad4b47dc4ff4e91, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.599998
+      value: -16.5
       objectReference: {fileID: 0}
     - target: {fileID: 1955916780706173971, guid: 0d2a576dc32d73b42ad4b47dc4ff4e91, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6655,8 +6655,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.89472413, y: 1, z: 1}
+  m_Center: {x: 0.052637488, y: 0, z: -7.8797795e-14}
 --- !u!23 &431030851
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13894,8 +13894,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.1586702, y: 1, z: 1}
+  m_Center: {x: 0.079333395, y: 0, z: 6.5141035e-15}
 --- !u!23 &849012623
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34021,6 +34021,10 @@ PrefabInstance:
       value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: 2939134083399327227, guid: 81b66364077460441847ab111d2cb578, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2939134083399327227, guid: 81b66364077460441847ab111d2cb578, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -36645,6 +36649,10 @@ PrefabInstance:
     - target: {fileID: 5087710811956852652, guid: 506ac5c0ff944dc4cb64ecb44960e403, type: 3}
       propertyPath: m_Name
       value: Portal A
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087710811956852652, guid: 506ac5c0ff944dc4cb64ecb44960e403, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5586388265457743502, guid: 506ac5c0ff944dc4cb64ecb44960e403, type: 3}
       propertyPath: m_LocalPosition.x

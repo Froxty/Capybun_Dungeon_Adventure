@@ -54,9 +54,10 @@ public class InteractKeyDoorOpener : MonoBehaviour
     [Tooltip("Trigger collider used for auto-open. Assign explicitly to avoid disabling the wrong one.")]
     [SerializeField] Collider triggerCollider;
 
-    bool playerInRange = false;
-    bool opened = false;    // door logic has fired
-    bool keyUsed = false;   // key was successfully consumed for this door
+    bool opened = false;
+
+    // Prevent locked sound from spamming
+    bool lockedSFXPlayed = false;
 
     void Start()
     {
@@ -87,19 +88,16 @@ public class InteractKeyDoorOpener : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
+        if (opened) return;  // door already opened, ignore further triggers
 
-        playerInRange = true;
         Debug.Log("[KeyDoorOpener] Player entered trigger – attempting auto open.");
-
-        // auto-open style: touching the gate uses the key
-        TryInteract();
+        TryInteract(); // auto-open style: touching the gate uses the key
     }
 
     void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 
-        playerInRange = false;
         Debug.Log("[KeyDoorOpener] Player left trigger.");
     }
 
@@ -132,9 +130,12 @@ public class InteractKeyDoorOpener : MonoBehaviour
         {
             Debug.Log("[KeyDoorOpener] Player does NOT have required key: " + requiredItemId);
 
-            // Only ever play locked SFX if this door has never been opened/used.
-            if (!keyUsed && audioSource != null && lockedSFX != null)
+            // Only ever play locked SFX once for this door until it opens
+            if (!lockedSFXPlayed && audioSource != null && lockedSFX != null)
+            {
                 audioSource.PlayOneShot(lockedSFX);
+                lockedSFXPlayed = true;
+            }
 
             return;
         }
@@ -143,7 +144,6 @@ public class InteractKeyDoorOpener : MonoBehaviour
         Debug.Log("[KeyDoorOpener] Player HAS key, proceeding to open door.");
 
         opened = true;
-        keyUsed = true;
 
         // Consume key if needed
         if (consumeKeyOnUse)
@@ -154,13 +154,18 @@ public class InteractKeyDoorOpener : MonoBehaviour
             if (!consumed)
             {
                 Debug.LogWarning("[KeyDoorOpener] Had key but failed to consume it. Check inventory setup.");
-                // opened = false;
-                // keyUsed = false;
+                opened = false; // optional: allow retry if consumption fails
                 return;
             }
         }
 
-        // Immediately disable the trigger so no more auto-opens fire
+        // Play open SFX once on successful unlock
+        if (audioSource != null && openSFX != null)
+        {
+            audioSource.PlayOneShot(openSFX);
+        }
+
+        // Immediately disable the trigger so no more auto-opens fire on THIS collider
         if (triggerCollider != null)
         {
             triggerCollider.enabled = false;
@@ -183,9 +188,6 @@ public class InteractKeyDoorOpener : MonoBehaviour
         if (delayBeforeDoorOpens > 0f)
             yield return new WaitForSeconds(delayBeforeDoorOpens);
 
-        if (audioSource != null && openSFX != null)
-            audioSource.PlayOneShot(openSFX);
-
         Quaternion startRot = door.rotation;
         Quaternion targetRot = Quaternion.Euler(openRotation);
         float t = 0f;
@@ -199,7 +201,7 @@ public class InteractKeyDoorOpener : MonoBehaviour
 
         Debug.Log("[KeyDoorOpener] Door fully opened.");
 
-        // Optional: we’re done, so this script never needs to respond again.
+        // Script never needed again
         enabled = false;
     }
 }

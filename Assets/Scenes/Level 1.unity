@@ -755,8 +755,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49482229}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.34343, y: 0.02946, z: 12.11538}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20.16218, y: 0.000010000542, z: 17.30559}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -764,7 +764,7 @@ Transform:
   - {fileID: 1261156619}
   - {fileID: 543450652798177040}
   - {fileID: 140897764}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 678019349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &59061108
 PrefabInstance:
@@ -3865,15 +3865,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2614142523251394150, guid: 0a70a00400811b548a718247ac109a19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.142
+      value: -1.9420004
       objectReference: {fileID: 0}
     - target: {fileID: 2614142523251394150, guid: 0a70a00400811b548a718247ac109a19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.079
+      value: -0.07899968
       objectReference: {fileID: 0}
     - target: {fileID: 2614142523251394150, guid: 0a70a00400811b548a718247ac109a19, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.897
+      value: -2.0969994
       objectReference: {fileID: 0}
     - target: {fileID: 2927700952562137830, guid: 0a70a00400811b548a718247ac109a19, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11155,7 +11155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 678019349}
   m_Layer: 0
-  m_Name: Puzzles
+  m_Name: Puzzles_Bun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11176,6 +11176,7 @@ Transform:
   m_Children:
   - {fileID: 907964171}
   - {fileID: 1954314074}
+  - {fileID: 49482230}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &681806085
@@ -12353,7 +12354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   itemId: Capy_Key
-  itemIcon: {fileID: 21300000, guid: 5eb3b829e750bb94abab10db2b33f4cd, type: 3}
+  itemIcon: {fileID: 21300000, guid: de80d75e445c9d74e8ee5ebb7e505f85, type: 3}
   amount: 1
   promptLabel: {fileID: 0}
   pickupMode: 0
@@ -24063,6 +24064,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1120749169857038335, guid: 5d1190bbbb3386444ae7279bc1b7318e, type: 3}
   m_PrefabInstance: {fileID: 1508015442}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1512853278
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1943166309}
+    m_Modifications:
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.34445
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.231
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149103995353751969, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_Name
+      value: Floor 3x3 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149103995353751969, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952185734908792588, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 3390256602074635484, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+    - {fileID: 1999767147907899190, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+    - {fileID: 4618041370292395613, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+    - {fileID: 3768747897127718247, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+    - {fileID: 937121476158342391, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+    - {fileID: 2927700952562137830, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+    - {fileID: 8094245626691635670, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+    - {fileID: 6356567543278179658, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+--- !u!4 &1512853279 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1120749169857038335, guid: 0a70a00400811b548a718247ac109a19, type: 3}
+  m_PrefabInstance: {fileID: 1512853278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1513321647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26276,7 +26359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1640794641}
   m_Layer: 0
-  m_Name: Capy_Puzzle_1
+  m_Name: Puzzles_Capy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31358,6 +31441,7 @@ Transform:
   - {fileID: 799554278}
   - {fileID: 237621894}
   - {fileID: 615957779}
+  - {fileID: 1512853279}
   - {fileID: 306202125}
   - {fileID: 1710900191}
   - {fileID: 2028681597}
@@ -33153,6 +33237,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 783fa928d5177114586f0b20ab1fa877, type: 3}
       propertyPath: m_Name
       value: Puzzle_Key_Door_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 783fa928d5177114586f0b20ab1fa877, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 783fa928d5177114586f0b20ab1fa877, type: 3}
       propertyPath: m_LocalScale.x
@@ -37649,4 +37737,3 @@ SceneRoots:
   - {fileID: 1297206697}
   - {fileID: 1640794641}
   - {fileID: 678019349}
-  - {fileID: 49482230}

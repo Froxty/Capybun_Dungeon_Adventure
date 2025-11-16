@@ -85,6 +85,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1864766424-0
         - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1261156618-0
         - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1729421169-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-68035896-0
         values:
         - colorIndex: 7
           iconNameOrGuid: 
@@ -156,6 +157,10 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 2
           iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []

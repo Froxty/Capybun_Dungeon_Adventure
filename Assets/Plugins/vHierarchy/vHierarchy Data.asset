@@ -86,6 +86,14 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1261156618-0
         - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1729421169-0
         - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-68035896-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1875317145-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1563846257-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-419421069-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-983785014-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-2457016941050536709-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-311242584196128355-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-1962084229-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6c73b351bb90bcd46a12c5ecd07fa16b-429050094-0
         values:
         - colorIndex: 7
           iconNameOrGuid: 
@@ -155,12 +163,44 @@ MonoBehaviour:
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
-        - colorIndex: 2
+        - colorIndex: 8
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: AudioSource Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []

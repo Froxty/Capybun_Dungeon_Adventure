@@ -15,7 +15,7 @@ Material:
   m_InvalidKeywords:
   - BSSBLOOMFOGTYPE_HEIGHT
   - VIGNETTE_MASKED
-  - _LIGHTINGMODE_FLAT
+  - _LIGHTINGMODE_REALISTIC
   - _RIM2STYLE_POIYOMI
   - _RIMSTYLE_POIYOMI
   - _STOCHASTICMODE_DELIOT_HEITZ
@@ -25,8 +25,8 @@ Material:
   m_CustomRenderQueue: 2460
   stringTagMap:
     AllLockedGUIDS: b9de1fcf0a29f434d893c87c25c30f94
-    OriginalKeywords: BSSBLOOMFOGTYPE_HEIGHT VIGNETTE_MASKED _LIGHTINGMODE_FLAT _RIM2STYLE_POIYOMI
-      _RIMSTYLE_POIYOMI _STOCHASTICMODE_DELIOT_HEITZ
+    OriginalKeywords: BSSBLOOMFOGTYPE_HEIGHT VIGNETTE_MASKED _LIGHTINGMODE_REALISTIC
+      _RIM2STYLE_POIYOMI _RIMSTYLE_POIYOMI _STOCHASTICMODE_DELIOT_HEITZ
     OriginalShader: .poiyomi/Poiyomi Toon
     OriginalShaderGUID: 104003ab15a9f7a47b6ef0597225e771
     RenderType: TransparentCutout
@@ -430,7 +430,7 @@ Material:
     - _CubeMapUVMode: 1
     - _CubeMapWorldNormalsStrength: 1
     - _CubemapBlendType: 0
-    - _Cull: 2
+    - _Cull: 0
     - _CurvFix: 1
     - _CurvatureU: 0
     - _CurvatureV: 0
@@ -1310,11 +1310,11 @@ Material:
     - _LightingAddDetailShadowStrengthB: 0
     - _LightingAddDetailShadowStrengthG: 0
     - _LightingAddDetailShadowStrengthR: 1
-    - _LightingAdditiveCastedShadows: 1
+    - _LightingAdditiveCastedShadows: 0.692
     - _LightingAdditiveEnable: 1
     - _LightingAdditiveGradientEnd: 0.5
     - _LightingAdditiveGradientStart: 0
-    - _LightingAdditiveLimit: 1
+    - _LightingAdditiveLimit: 1.5
     - _LightingAdditiveLimited: 1
     - _LightingAdditiveMonochromatic: 0
     - _LightingAdditivePassthrough: 0.5
@@ -1340,8 +1340,8 @@ Material:
     - _LightingMapMode: 0
     - _LightingMinLightBrightness: 0.4
     - _LightingMirrorVertexLightingEnabled: 1
-    - _LightingMode: 5
-    - _LightingMonochromatic: 0
+    - _LightingMode: 6
+    - _LightingMonochromatic: 0.2
     - _LightingMulitlayerNonLinear: 1
     - _LightingShadowMaskStrengthA: 0
     - _LightingShadowMaskStrengthB: 0
@@ -2556,8 +2556,8 @@ Material:
     - m_lightingCategory: 1
     - m_mainCategory: 1
     - m_modifierCategory: 0
-    - m_renderingCategory: 0
-    - m_specialFXCategory: 0
+    - m_renderingCategory: 1
+    - m_specialFXCategory: 1
     - m_start_ALDecalSpectrum: 0
     - m_start_ALVolumeColor: 0
     - m_start_Alpha: 0
@@ -3114,8 +3114,8 @@ Material:
     - s_start_ScrollingEmission1: 0
     - s_start_ScrollingEmission2: 0
     - s_start_ScrollingEmission3: 0
-    - s_start_ShadingAddPass: 0
-    - s_start_ShadingGlobalMask: 0
+    - s_start_ShadingAddPass: 1
+    - s_start_ShadingGlobalMask: 1
     - s_start_StylizedReflectionLilEnviroReflections: 1
     - s_start_StylizedReflectionLilSpecular: 1
     - s_start_StylizedReflectionMode0: 1

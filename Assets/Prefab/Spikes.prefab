@@ -227,6 +227,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1329865912513341585}
+  - component: {fileID: 3479799419856773450}
+  - component: {fileID: 1164013496016994970}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Untagged
@@ -251,3 +253,48 @@ Transform:
   - {fileID: 1818523175346549263}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3479799419856773450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133940766216254928}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1692848, y: 1.5279992, z: 1}
+  m_Center: {x: -0.005361557, y: 0.26399982, z: 0}
+--- !u!114 &1164013496016994970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133940766216254928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25965cdb6f76671478733d1e676920de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpikeTrap
+  spike: {fileID: 1818523175346549263}
+  upLocalPos: {x: 0, y: 0, z: 0}
+  downLocalPos: {x: 0, y: -0.876, z: 0}
+  riseSpeed: 10
+  stayUpTime: 1
+  dropSpeed: 10
+  resettable: 1
+  resetCooldown: 1
+  audioSource: {fileID: 0}
+  globalAudioSourceName: GameMaster_AudioSource
+  spikeUpSFX: {fileID: 8300000, guid: 830c7a4e93000f9468450d0d3723ec38, type: 3}
+  spikeDownSFX: {fileID: 8300000, guid: 7fd102f15edc7184b9dd76c47060b57d, type: 3}

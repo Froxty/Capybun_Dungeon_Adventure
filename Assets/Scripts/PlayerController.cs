@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
     public void OnCast(InputValue v)
     {
         if (!acceptInput || !v.isPressed) return;
-        Debug.Log("[Player] Interact pressed.");
+        //Debug.Log("[Player] Interact pressed.");
 
         // Play interact animation
         if (animator)
@@ -89,33 +89,60 @@ public class PlayerController : MonoBehaviour
         if (interactAudioSource && interactSFX)
             interactAudioSource.PlayOneShot(interactSFX);
 
-        // Check for interactables in range
-        Collider[] hits = Physics.OverlapSphere(transform.position, 1.5f);
+        float interactRadius = 1.5f;
+        Collider[] hits = Physics.OverlapSphere(transform.position, interactRadius);
+
+        //Debug.Log($"[Player] OverlapSphere hits: {hits.Length} (radius={interactRadius})");
+
         foreach (var hit in hits)
         {
-            // 1) Gate opener
+            bool hasGate   = hit.GetComponent<InteractGateOpener>()       != null;
+            bool hasSpawn  = hit.GetComponent<InteractSpawnItem>()        != null;
+            bool hasKey    = hit.GetComponent<InteractKeyDoorOpener>()    != null;
+            bool hasPortal = hit.GetComponent<InteractPortalActivator>()  != null;
+
+            //Debug.Log($"[Player] Hit '{hit.name}'  Gate:{hasGate}  Spawn:{hasSpawn}  KeyDoor:{hasKey}  Portal:{hasPortal}");
+        }
+
+        // Portal
+        foreach (var hit in hits)
+        {
+            var portal = hit.GetComponent<InteractPortalActivator>();
+            if (portal != null)
+            {
+                portal.TryInteract();
+                return;
+            }
+        }
+
+        // Gate opener
+        foreach (var hit in hits)
+        {
             var opener = hit.GetComponent<InteractGateOpener>();
             if (opener != null)
             {
-                Debug.Log("[Player] Found InteractGateOpener — calling TryInteract()");
                 opener.TryInteract();
-                return; // stop after first successful interact
+                return;
             }
+        }
 
-            // 2) Item spawner
+        // Item spawner
+        foreach (var hit in hits)
+        {
             var spawner = hit.GetComponent<InteractSpawnItem>();
             if (spawner != null)
             {
-                Debug.Log("[Player] Found InteractSpawnItem — calling TryInteract()");
                 spawner.TryInteract();
                 return;
             }
+        }
 
-            // 3) Key door
+        // Key door
+        foreach (var hit in hits)
+        {
             var keyDoor = hit.GetComponent<InteractKeyDoorOpener>();
             if (keyDoor != null)
             {
-                Debug.Log("[Player] Found InteractKeyDoorOpener — calling TryInteract()");
                 keyDoor.TryInteract();
                 return;
             }

@@ -68,7 +68,6 @@ public class InteractKeyDoorOpener : MonoBehaviour
         if (triggerCollider == null)
             triggerCollider = GetComponent<Collider>();
 
-        // Hook up global audio if needed
         if (audioSource == null && !string.IsNullOrEmpty(globalAudioSourceName))
         {
             GameObject go = GameObject.Find(globalAudioSourceName);
@@ -90,8 +89,8 @@ public class InteractKeyDoorOpener : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         if (opened) return;  // door already opened, ignore further triggers
 
-        Debug.Log("[KeyDoorOpener] Player entered trigger – attempting auto open.");
-        TryInteract(); // auto-open style: touching the gate uses the key
+        //Debug.Log("[KeyDoorOpener] Player entered trigger – attempting auto open.");
+        TryInteract(); 
     }
 
     void OnTriggerExit(Collider other)
@@ -101,14 +100,11 @@ public class InteractKeyDoorOpener : MonoBehaviour
         Debug.Log("[KeyDoorOpener] Player left trigger.");
     }
 
-    /// <summary>
-    /// Called either by trigger or by PlayerController raycast Interact.
-    /// </summary>
     public void TryInteract()
     {
         if (opened)
         {
-            Debug.Log("[KeyDoorOpener] TryInteract called but door already opened. Ignoring.");
+            //Debug.Log("[KeyDoorOpener] TryInteract called but door already opened. Ignoring.");
             return;
         }
 
@@ -128,7 +124,7 @@ public class InteractKeyDoorOpener : MonoBehaviour
         // ---- NO KEY BRANCH ----
         if (!inventory.HasItem(requiredItemId))
         {
-            Debug.Log("[KeyDoorOpener] Player does NOT have required key: " + requiredItemId);
+            //Debug.Log("[KeyDoorOpener] Player does NOT have required key: " + requiredItemId);
 
             // Only ever play locked SFX once for this door until it opens
             if (!lockedSFXPlayed && audioSource != null && lockedSFX != null)
